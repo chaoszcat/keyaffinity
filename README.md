@@ -43,7 +43,6 @@ On Messages Page:
 ###Known Bugs
 ---
 
-* The Change Image size function does not work if you have submissions set to be in full view by default. Fix coming after the redesign. If you'd like to use this feature for the time being, please disable Full View in Account Management > Profile Info. (I may figure out a workaround for those using this function)
 * Change image size function does not work after attempting to favorite your own submission. Fix coming soon.
 * If a notification comes in after the page has loaded, jumping to the new messages page will not work until you reload the page.
 
