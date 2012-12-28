@@ -45,7 +45,6 @@ On Messages Page:
 ###Known Bugs
 ---
 
-* Change image size function does not work after attempting to favorite your own submission. Fix coming soon.
 * If a notification comes in after the page has loaded, jumping to the new messages page will not work until you reload the page.
 
 ###Special Thanks
