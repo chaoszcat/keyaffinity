@@ -11,6 +11,8 @@ I was browsing FurAffinity the other day, and it occurred to me that there was n
 
 This simple script is a Chrome Extension that allows you to browse FurAffinity with ease. A list of the shortcuts available for use is available below. **KeyAffinity** is available for free on the [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US).
 
+If you enjoy this extension and would like to support further development, please consider [donating via PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AKZSAX8XEUZC6).
+
 ###Functions
 ---
 
@@ -20,7 +22,7 @@ Submission pages:
 	◀ - Previous Submission
 	F - Favorite Submission
 	C - Jump to Comment box (also works on Journals)
-	/ - Change image size (see known bugs)
+	/ - Change image size
 	D - Download submission
 	
 Anywhere:
