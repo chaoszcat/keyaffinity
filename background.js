@@ -131,7 +131,7 @@ function comment() {
 }
 
 function sizeChange() {
-	window.location = fullLink;										// Go to full view @TODO does not work with full on by default
+	$('#submissionImg').trigger('click');							// Simulate image click to change size
 }
 
 function download() {
