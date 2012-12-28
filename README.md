@@ -1,4 +1,6 @@
-#KeyAffinity
+##KeyAffinity
+
+#####[Homepage](http://keyaffinity.k0bi.tk) | [Changelog](https://github.com/kobitate94/keyaffinity/blob/master/changelog.md) | [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US)
 
 ###About
 
