@@ -1,6 +1,8 @@
 ##KeyAffinity
 
-#####[Homepage](http://keyaffinity.k0bi.tk) | [Changelog](https://github.com/kobitate94/keyaffinity/blob/master/changelog.md) | [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US)
+**[Homepage](http://keyaffinity.k0bi.tk) | [Changelog](https://github.com/kobitate94/keyaffinity/blob/master/changelog.md)**
+
+**Download: [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US) | [Mozilla Addons](https://addons.mozilla.org/en-US/firefox/addon/keyaffinity/) | [Userscript](http://userscripts.org/scripts/show/154599)**
 
 ###About
 
