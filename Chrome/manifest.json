@@ -5,7 +5,7 @@
   "description": "Adds keyboard navigation functions to FurAffinity",
   "content_scripts": [
     {
-      "matches": ["http://www.furaffinity.net/*"],
+      "matches": ["http://www.furaffinity.net/*"]
       "js": ["jquery.js", "hotkeys.js", "background.js"]
     }
   ],

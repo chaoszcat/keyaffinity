@@ -50,6 +50,7 @@ On Messages Page:
 ---
 
 * If a notification comes in after the page has loaded, jumping to the new messages page will not work until you reload the page. A fix is in the works.
+* There seems to be an incompatibility with another Chrome Extension that causes all keyboard keys to trigger the message nuke function. 
 
 ###Special Thanks
 ---
