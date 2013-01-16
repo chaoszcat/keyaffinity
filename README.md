@@ -37,7 +37,7 @@ On Messages Page:
 	
 	Alt-S - Nuke Submissions
 	Alt-C - Nuke Submission Comments
-	Alt-W - Nuke Watces
+	Alt-W - Nuke Wathces
 	Alt-H - Nuke Shouts
 	Alt-J - Nuke Journals
 	
@@ -49,7 +49,7 @@ On Messages Page:
 ###Known Bugs
 ---
 
-* If a notification comes in after the page has loaded, jumping to the new messages page will not work until you reload the page.
+* If a notification comes in after the page has loaded, jumping to the new messages page will not work until you reload the page. A fix is in the works.
 
 ###Special Thanks
 ---
