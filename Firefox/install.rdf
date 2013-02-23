@@ -1,25 +1,29 @@
-<?xml version="1.0"?>
-<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
-	<Description about="urn:mozilla:install-manifest">
-	
-		<em:id>{719d77e0-344f-41a9-b5ea-49aba84a6f55}</em:id>
-		
-		<em:name>KeyAffinity</em:name>
-		<em:version>1.1.6</em:version>
-		<em:description>Adds keyboard navigation functionality to FurAffinity.net</em:description>
-		
-		<em:creator>Kobi Tate</em:creator>
-		<em:contributor>Greasemonkey Compiler by Anthony Lieuallen;</em:contributor>
-		<em:contributor>http://arantius.com/</em:contributor>
-		<em:homepageURL>http://keyaffinity.k0bi.tk</em:homepageURL>
-		
-		<em:targetApplication>
-			<Description>
-				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-				<em:minVersion>2.0</em:minVersion>
-				<em:maxVersion>17.*</em:maxVersion>
-			</Description>
-		</em:targetApplication>
-		
-	</Description>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. --><RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>jid0-51oea9pgE6bEjM8cDZ1e6xgqJa4@jetpack</em:id>
+    <em:version>1.1.6.2</em:version>
+    <em:type>2</em:type>
+    <em:bootstrap>true</em:bootstrap>
+    <em:unpack>false</em:unpack>
+
+    <!-- Firefox -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>18.0</em:minVersion>
+        <em:maxVersion>19.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Front End MetaData -->
+    <em:name>KeyAffinity</em:name>
+    <em:description>http://keyaffinity.k0bi.tk</em:description>
+    <em:creator>kobitate94</em:creator>
+    
+    
+    
+  </Description>
 </RDF>

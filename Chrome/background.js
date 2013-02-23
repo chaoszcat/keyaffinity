@@ -173,7 +173,6 @@ $('#JSMessage, .textbox, #message, #keywords').focusin(function() {	// When you 
 });
 
 // Key combos for message management
-
 if (pageType = "msg" && control) {
 	$(document).bind('keydown', 'alt+s', function(){
 		nuke("subs");
