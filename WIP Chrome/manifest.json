@@ -1,19 +1,24 @@
 {
-   "content_scripts": [ {
-      "js": [ "assets/jquery.js", "assets/hotkeys.js", "background.js" ],
-      "matches": [ "http://www.furaffinity.net/*" ]
-   } ],
-   "options_page": "options.html",
+   "manifest_version": 2,
+   "name": "KeyAffinity BETA",
+   "version": "1.1.7",
    "description": "Adds keyboard navigation functions to FurAffinity",
    "icons": {
       "128": "icon.png"
    },
-   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqnkhHEPkGpA/j0r1GyI06CQydf8AqcpPm3iQIIPPIlJsNeFD6FaXeBKcua1UWXqr32kDzPtrmRwsGK7RT/54U91sSyIAW1maBv3BEORKYMW0FKobACLDRPd77pSqmBvQHZ6l+T/j2xYYiKH/oRuOMFzvpZin2j6dcQzc5hq1V8wIDAQAB",
-   "manifest_version": 2,
-   "name": "KeyAffinity BETA",
-   "update_url": "http://clients2.google.com/service/update2/crx",
-   "version": "1.1.7",
+   "content_scripts": [ {
+      "js": [ "assets/jquery.js", "assets/hotkeys.js", "assets/csv.js", "background.js" ],
+      "matches": [ "http://www.furaffinity.net/*" ]
+   } ],
    "web_accessible_resources": [
-      "assets/optionsload.html"
-   ]
+      "assets/optionsload.html",
+      "assets/optionsload.js"
+   ],
+   "permissions": [
+      "http://*.furaffinity.net/*",
+      "https://*.furaffinity.net/*"
+   ],
+   "options_page": "options.html",
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqnkhHEPkGpA/j0r1GyI06CQydf8AqcpPm3iQIIPPIlJsNeFD6FaXeBKcua1UWXqr32kDzPtrmRwsGK7RT/54U91sSyIAW1maBv3BEORKYMW0FKobACLDRPd77pSqmBvQHZ6l+T/j2xYYiKH/oRuOMFzvpZin2j6dcQzc5hq1V8wIDAQAB",
+   "update_url": "http://clients2.google.com/service/update2/crx"
 }
