@@ -1,9 +1,20 @@
 console.log("KeyAffinity is running");
+
+// Link grabbing
 var prevLink = $('a.prev').attr("href"); 							// Get link to previous submission
 var nextLink = $('a.next').attr("href"); 							// Get link to next submission
 var faveLink = $('.alt1 a[href*="fav"]').attr("href");				// Get link to fave submission
 var dlLink = $('.alt1 a[href*="facdn.net/art"]').attr("href");		// Get link to download submission
 var fullLink;
+
+// Notification variables
+var newNotifs = false;
+var newSubs = false;
+var newTix = false;
+var newComms = false;
+var newNotes = false;
+var titleNotifs = false; // Enable for FAStatus integration
+var pageTitle = document.title;
 
 // Add IDs to elements to simplify jQuery contol
 $('h3 input[name=nuke-watches]').attr("id", "nuke-watches");
@@ -15,16 +26,18 @@ $('a[title^="Submissions"]').attr("id", "new-subs");
 $('a[title^="Comments"]').attr("id", "new-comments");
 $('a[title^="Notes"]').attr("id", "new-notes");
 $('a[title^="Trouble"]').attr("id", "new-tickets");
+$('li.noblock:first').attr("id", "notifs"); // Relies on the notifications div being the first noblock li, may want to change
 
 // Set booleans to enable and disable some functions (possible use for options page)
-var control = new Boolean();
-var pagination = new Boolean();
-var mainJump = new Boolean();
-var comJump = new Boolean();
+var control = new Boolean();		// Controls all single-key functions
+var pagination = new Boolean();		// Left/right arrow keys, disabled on non-submission pages
+var mainJump = new Boolean();		// jumping to main section of page, disabled on non-submission pages
+var comJump = new Boolean();		// Comment textbox jumping
 control = true;
 pagination = true;
-mainJump = true;
 comJump = true;
+mainJump = true;
+
 
 var pathArray = window.location.pathname.split( '/' );				// Get current page, place in array
 var pageType = pathArray[1];										// Grab page type (view, journal, full, etc.) from URL
@@ -63,23 +76,12 @@ function getUrlVars() {
 	return vars;
 }
 
-var debug = getUrlVars()["ka-debug"];
+var debugParam = getUrlVars()["ka-debug"];
 
-if (debug == "true") {
-	console.log("\n\n~~ KeyAffinity Debugging ~~");
-	console.log("Previous link: " + prevLink);
-	console.log("Next link: " + nextLink);
-	console.log("Fave link: " + faveLink);
-	console.log("Download link: " + dlLink);
-	console.log("Full link: " + fullLink);
-	console.log("Control: " + control);
-	console.log("Pagination: " + pagination);
-	console.log("Main section jump: " + mainJump);
-	console.log("Comment jump: " + comJump);
-	console.log("Page type: " + pageType);
-	console.log("Submission number: " + subNumber);
-	console.log("~~ KeyAffinity Debugging ~~\n\n");
+if (debugParam == "true") {
+	var debug = true;
 }
+
 
 // Insert the popup boxes
 if (nextLink == null && pagination) {
@@ -101,6 +103,70 @@ if (mainJump) {
 		scrollTop: $('.innertable').offset().top 					// Scroll to main section of page if jumping is enabled
 		}, 0);
 }
+
+// Notification checking
+jQuery.fn.contentChange = function(callback){
+var elms = jQuery(this);
+elms.each(
+	function(i){
+		var elm = jQuery(this);
+		elm.data("lastContents", elm.html());
+		window.watchContentChange = window.watchContentChange ? window.watchContentChange : [];
+		window.watchContentChange.push({"element": elm, "callback": callback});
+	}
+)
+return elms;
+}
+
+setInterval(function(){
+if(window.watchContentChange){
+	for( i in window.watchContentChange){
+		if(window.watchContentChange[i].element.data("lastContents") != window.watchContentChange[i].element.html()){
+		  window.watchContentChange[i].callback.apply(window.watchContentChange[i].element);
+		  window.watchContentChange[i].element.data("lastContents", window.watchContentChange[i].element.html())
+		};
+	}
+}
+}, 500);
+
+function checkNotifs() {
+	if ($('#new-notes').text() != ""){
+		//window.location = "/msg/pms";
+		newNotifs = true;
+		newNotes = true;
+	}
+	else if ($('#new-comments').text() != "") {
+		//window.location = "/msg/others";
+		newNotifs = true;
+		newComms = true;
+	}
+	else if ($('#new-subs').text() != "") {
+		//window.location = "/msg/submissions";
+		newNotifs = true;
+		newSubs = true;
+	}
+	else if ($('#new-tickets').text() != "") {
+		//window.location = "/msg/troubletickets";
+		newNotifs = true;
+		newTickets = true;
+	}
+	else {
+		newNotifs = false;
+	}
+	if (newNotifs && titleNotifs) {
+		var notifStr = $("#notifs").text();
+		var notifStartIndex = notifStr.indexOf("(");
+		var notifEndIndex = notifStr.indexOf(")")+1;
+		notifStr = notifStr.substring(notifStartIndex, notifEndIndex);
+		document.title = notifStr + " " + pageTitle;
+	}
+}
+
+checkNotifs();
+
+$("#notifs").contentChange(function(){
+	checkNotifs();
+});
 
 // Functions for controls
 function prevSub() {
@@ -143,16 +209,16 @@ function nuke(type) {
 }
 
 function goToMsgs() {
-	if ($('#new-subs').text() != ""){
-		window.location = "/msg/submissions";
-	}
-	else if ($('#new-comments').text() != "") {
-		window.location = "/msg/others";
-	}
-	else if ($('#new-notes').text() != "") {
+	if (newNotes){
 		window.location = "/msg/pms";
 	}
-	else if ($('#new-tickets').text() != "") {
+	else if (newSubs) {
+		window.location = "/msg/submissions";
+	}
+	else if (newComms) {
+		window.location = "/msg/others";
+	}
+	else if (newTix) {
 		window.location = "/msg/troubletickets";
 	}
 	else {
@@ -225,19 +291,37 @@ $(document.documentElement).keyup(function (event) {				// Detect keyboard usage
     }
 });
 
-/*	*	*	* Google Analytics *	*	 *	 */
+// Debug running
 
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-37203159-1']);
-_gaq.push(['_trackPageview']);
+if (debug) {
+	console.log("\n\n~~ KeyAffinity Debugging ~~");
+	console.log("Previous link: " + prevLink);
+	console.log("Next link: " + nextLink);
+	console.log("Fave link: " + faveLink);
+	console.log("Download link: " + dlLink);
+	console.log("Full link: " + fullLink);
+	console.log("Control: " + control);
+	console.log("Pagination: " + pagination);
+	console.log("Main section jump: " + mainJump);
+	console.log("Comment jump: " + comJump);
+	console.log("Page type: " + pageType);
+	console.log("Submission number: " + subNumber);
+	console.log("New notifications: " + newNotifs);
+	console.log("New submissions: " + newSubs);
+	console.log("New support tickets: " + newTix);
+	console.log("New comments: " + newComms);
+	console.log("New notes: " + newNotes);
+	console.log("Title notificaions: " + titleNotifs);
+	/* Options not yet implemented
+	console.log("Options:");
+	console.log("\tSubmission auto-scroll: " + optVar_subjump);
+	console.log("\tFAStatus integration: " + optVar_status);
+	console.log("\tDebug Mode: " + optVar_debug);
+	*/
+	console.log("~~ KeyAffinity Debugging ~~\n\n");
+	
+}
 
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = 'https://ssl.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-
-_gaq.push(['_trackPageview']);
 
 /* 
  * 
