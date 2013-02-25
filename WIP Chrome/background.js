@@ -1,11 +1,23 @@
 console.log("KeyAffinity BETA is running");
+
+// Insert iframe of assets/optionsload.html
+var optFrameURL = chrome.extension.getURL("assets/optionsload.html");
+//alert (optFrameURL);
+//$('.footer').before('<iframe src="' + optFrameURL + '"></iframe>');
+
+// Options loading
+optVar_subjump = localStorage["opt_subjump"];
+optVar_debug = localStorage["opt_debug"];
+optVar_status = localStorage["opt_status"];
+
+// Link grabbing
 var prevLink = $('a.prev').attr("href"); 							// Get link to previous submission
 var nextLink = $('a.next').attr("href"); 							// Get link to next submission
 var faveLink = $('.alt1 a[href*="fav"]').attr("href");				// Get link to fave submission
 var dlLink = $('.alt1 a[href*="facdn.net/art"]').attr("href");		// Get link to download submission
 var fullLink;
 
-// Notification variables;
+// Notification variables
 var newNotifs = false;
 var newSubs = false;
 var newTix = false;
@@ -33,8 +45,14 @@ var mainJump = new Boolean();		// jumping to main section of page, disabled on n
 var comJump = new Boolean();		// Comment textbox jumping
 control = true;
 pagination = true;
-mainJump = true;
 comJump = true;
+
+if (optVar_subjump == "true") {
+	mainJump = true;
+}
+else {
+	mainJump = false;
+}
 
 var pathArray = window.location.pathname.split( '/' );				// Get current page, place in array
 var pageType = pathArray[1];										// Grab page type (view, journal, full, etc.) from URL
@@ -310,6 +328,10 @@ if (debug) {
 	console.log("New comments: " + newComms);
 	console.log("New notes: " + newNotes);
 	console.log("Title notificaions: " + titleNotifs);
+	console.log("Options:");
+	console.log("\tSubmission auto-scroll: " + optVar_subjump);
+	console.log("\tFAStatus integration: " + optVar_status);
+	console.log("\tDebug Mode: " + optVar_debug);
 	console.log("~~ KeyAffinity Debugging ~~\n\n");
 	
 }

@@ -1,6 +1,6 @@
-var changesMade = false;
-
 $(document).ready(function(){
+
+/* ---------- Version grabbing ---------- */
 
 function getVersion() { 
     var version = 'NaN'; 
@@ -10,11 +10,14 @@ function getVersion() {
     var manifest = JSON.parse(xhr.responseText); 
     return manifest.version; 
   } 
-
 var version = getVersion();
-
-document.title = "KeyAffinity v." + version + " Options";
 $("#bar #version").html("v" + version);
+
+/* ---------- Option setting functions ---------- */
+
+function setOption(name, val) {
+	localStorage["opt_" + name] = val;
+}
 
 function resetDefaults() {
 	localStorage["opt_loaded"] = "reset";
@@ -22,28 +25,65 @@ function resetDefaults() {
 	window.location = window.location;
 }
 
-$("select, input, a.button, button").uniform();
+$("#reset").mousedown(function(){
+	resetDefaults();
+});
+
+/* ---------- For debugging ---------- */
 
 $("#opt_subjump2").html(optVar_subjump);
 $("#opt_status2").html(optVar_status);
 $("#opt_debug2").html(optVar_debug);
 
+/* ---------- Initial checkbox settings ---------- */
+
 if (optVar_subjump == "true") {
-	$("input#opt_subjump").attr('checked', true);
+	$("input:checkbox#opt_subjump").attr("checked", "checked");
 }
 else {
-	$("input#opt_subjump").attr('checked', false);
+	$("input:checkbox#opt_subjump").removeAttr("checked");
 }
 
 if (optVar_status == "true") {
-	$("input#opt_status").attr('checked', true);
+	$("input:checkbox#opt_status").attr("checked", "checked");
 }
 else {
-	$("input#opt_status").attr('checked', false);
+	$("input:checkbox#opt_status").removeAttr("checked");
 }
 
-$("#reset").mousedown(function(){
-	resetDefaults();
+if (optVar_debug == "true") {
+	$("input:checkbox#opt_debug").attr("checked", "checked");
+}
+else {
+	$("input:checkbox#opt_debug").removeAttr("checked");
+}
+
+$("#optionsform").submit(function(){
+
+	// Set Submission jumping
+	if ($("input:checkbox#opt_subjump").is(":checked")) {
+		setOption("subjump", "true");
+	}
+	else {
+		setOption("subjump", "false");
+	}
+	
+	// Set FAStatus
+	if ($("input:checkbox#opt_status").is(":checked")) {
+		setOption("status", "true");
+	}
+	else {
+		setOption("status", "false");
+	}
+	
+	// Set Debugging
+	if ($("input:checkbox#opt_debug").is(":checked")) {
+		setOption("debug", "true");
+	}
+	else {
+		setOption("debug", "false");
+	}
+	
 });
 
 

@@ -27,6 +27,7 @@ body {
 }
 
 /* ----- Banner ----- */
+
 #banner {
 	width: 500px;
 	height: 120px;
@@ -52,4 +53,5 @@ body {
 
 .box .content {
 	padding: 3px 6px;
+	font-size: 14px;
 }
