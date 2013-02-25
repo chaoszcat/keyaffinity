@@ -2,7 +2,7 @@
 
 **[Homepage](http://keyaffinity.k0bi.tk) | [Changelog](https://github.com/kobitate94/keyaffinity/blob/master/changelog.md)**
 
-**Download: [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US)** (v1.1.6) | **[Mozilla Addons](https://addons.mozilla.org/en-US/firefox/addon/keyaffinity/)** (v1.1.6.2) | **[Userscript](http://userscripts.org/scripts/show/154599)** (v1.1.6)
+**Download: [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US)** (v1.1.7) | **[Mozilla Addons](https://addons.mozilla.org/en-US/firefox/addon/keyaffinity/)** (v1.1.6.2r2) | **[Userscript](http://userscripts.org/scripts/show/154599)** (v1.1.7)
 
 ###About
 
