@@ -10,6 +10,7 @@
  * Moved to Addon Builder version
  * Moved jQuery and jQuery hotkeys plugin to their own files (as per Mozilla Addon reviewer request)
  * Now installable without browser restart
+ * **Under Mozilla Review**
 
 ####1.1.6
  * Fixed a bug that caused the change size function to not work if the user had Full Size enabled by default
