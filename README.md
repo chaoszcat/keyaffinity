@@ -37,7 +37,7 @@ On Messages Page:
 	
 	Alt-S - Nuke Submissions
 	Alt-C - Nuke Submission Comments
-	Alt-W - Nuke Wathces
+	Alt-W - Nuke Watches
 	Alt-H - Nuke Shouts
 	Alt-J - Nuke Journals
 	
@@ -49,7 +49,10 @@ On Messages Page:
 ###Known Bugs
 ---
 
-* No known bugs at this time
+* No shortcut for nuking Journal Comments. Fix coming soon (kind of busy right now)
+
+
+
 
 ###Special Thanks
 ---
