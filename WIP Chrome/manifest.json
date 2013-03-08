@@ -7,7 +7,7 @@
       "128": "icon.png"
    },
    "content_scripts": [ {
-      "js": [ "assets/jquery.js", "assets/hotkeys.js", "assets/csv.js", "background.js" ],
+      "js": [ "assets/jquery.js", "assets/hotkeys.js", "assets/optionsload.js", "background.js" ],
       "matches": [ "http://www.furaffinity.net/*" ]
    } ],
    "web_accessible_resources": [
@@ -16,7 +16,8 @@
    ],
    "permissions": [
       "http://*.furaffinity.net/*",
-      "https://*.furaffinity.net/*"
+      "https://*.furaffinity.net/*",
+      "storage"
    ],
    "options_page": "options.html",
    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqnkhHEPkGpA/j0r1GyI06CQydf8AqcpPm3iQIIPPIlJsNeFD6FaXeBKcua1UWXqr32kDzPtrmRwsGK7RT/54U91sSyIAW1maBv3BEORKYMW0FKobACLDRPd77pSqmBvQHZ6l+T/j2xYYiKH/oRuOMFzvpZin2j6dcQzc5hq1V8wIDAQAB",

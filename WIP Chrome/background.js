@@ -1,14 +1,5 @@
 console.log("KeyAffinity BETA is running");
 
-// Insert iframe of assets/optionsload.html
-var optFrameURL = chrome.extension.getURL("assets/optionsload.html");
-//alert (optFrameURL);
-$('.footer').before('<iframe src="' + optFrameURL + '"></iframe>');
-
-window.addEventListener("message", function () {
-	console.log("Recieved: " + event.data);
-});
-
 // Options loading
 optVar_subjump = localStorage["opt_subjump"];
 optVar_debug = localStorage["opt_debug"];
