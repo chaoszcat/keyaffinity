@@ -1,15 +1,20 @@
 #KeyAffinity Changelog
 ---
+####1.1.8
+ * Switched to GNU GPL v3 Licensing
+ * **Not yet available on Firefox due initial review process**
+ 
 ####1.1.7
  * Improved Notification system efficiency
  * General code tweaks
  * Added a few features that will be implemented in the future
- * **Not yet available on Firefox due to review of 1.1.6.2**
+ * **Not yet available on Firefox due initial review process**
 
 ####1.1.6.2 - *Firefox Only*
  * Moved to Addon Builder version
  * Moved jQuery and jQuery hotkeys plugin to their own files (as per Mozilla Addon reviewer request)
  * Now installable without browser restart
+ * Requested full add-on review
  * **Under Mozilla Review**
 
 ####1.1.6

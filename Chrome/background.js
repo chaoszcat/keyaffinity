@@ -1,3 +1,25 @@
+/*
+ *
+ *	 This file is part of KeyAffinity.
+ *
+ *   KeyAffinity is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   KeyAffinity is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   A copy of the GNU General Public License is located in LICENSE.txt
+ *   and is available online at <http://www.gnu.org/licenses/gpl.txt>.
+ *
+ *   KeyAffinity Copyright 2013 Kobi Tate. <http://k0bi.tk/>
+ *   <http://keyaffinity.k0bi.tk/>
+ *
+ */
+
 console.log("KeyAffinity is running");
 
 // Link grabbing
@@ -13,7 +35,7 @@ var newSubs = false;
 var newTix = false;
 var newComms = false;
 var newNotes = false;
-var titleNotifs = false; // Enable for FAStatus integration
+var titleNotifs = false;
 var pageTitle = document.title;
 
 // Add IDs to elements to simplify jQuery contol
@@ -315,17 +337,8 @@ if (debug) {
 	/* Options not yet implemented
 	console.log("Options:");
 	console.log("\tSubmission auto-scroll: " + optVar_subjump);
-	console.log("\tFAStatus integration: " + optVar_status);
 	console.log("\tDebug Mode: " + optVar_debug);
 	*/
 	console.log("~~ KeyAffinity Debugging ~~\n\n");
 	
 }
-
-
-/* 
- * 
- * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
- * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/3.0/.
- * 
- */
