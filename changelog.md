@@ -3,7 +3,7 @@
 ####1.1.9 (and 1.1.9.2)
  * Added ability to watch a user using the **W** key
  * Fixed page type detection bug (and associated bugs)
- * **1.1.9.2**: Reupload to Chrome Web Store due to power failure during upload of 1.1.9 (not kidding, there was a bolt of lightening in our backyard that cut the power for like 5 seconds)
+ * **1.1.9.2**: Reupload to Chrome Web Store due to power failure during upload of 1.1.9 (not kidding, there was a bolt of lightning in our backyard that cut the power for like 5 seconds)
  * **Not yet available on Firefox due initial review process**
 
 ####1.1.8
