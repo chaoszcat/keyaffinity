@@ -1,5 +1,11 @@
 #KeyAffinity Changelog
 ---
+####1.1.9 (and 1.1.9.2)
+ * Added ability to watch a user using the **W** key
+ * Fixed page type detection bug (and associated bugs)
+ * **1.1.9.2**: Reupload to Chrome Web Store due to power failure during upload of 1.1.9
+ * **Not yet available on Firefox due initial review process**
+
 ####1.1.8
  * Switched to GNU GPL v3 Licensing
  * **Not yet available on Firefox due initial review process**

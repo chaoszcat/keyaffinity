@@ -27,6 +27,7 @@ var prevLink = $('a.prev').attr("href"); 							// Get link to previous submissi
 var nextLink = $('a.next').attr("href"); 							// Get link to next submission
 var faveLink = $('.alt1 a[href*="fav"]').attr("href");				// Get link to fave submission
 var dlLink = $('.alt1 a[href*="facdn.net/art"]').attr("href");		// Get link to download submission
+var watchLink = $('a[href*="watch"]').attr("href");					// Get link to download submission
 var fullLink;
 
 // Notification variables
@@ -76,7 +77,7 @@ if (pageType == "") {
 	pageType = "home";
 }
 
-if (pageType == "journal" || pageType == "browse" || pageType == "search" || pageType == "home" || pageType == "submit") {
+if (pageType == "journal" || pageType == "browse" || pageType == "search" || pageType == "home" || pageType == "submit" || pageType == "user") {
 	pagination = false;
 }
 
@@ -254,6 +255,12 @@ function goToPage(pageName) {
 	}
 }
 
+function watchUser() {
+	if (watchLink != null) {
+		window.location = watchLink;
+	}
+}
+
 $('#JSMessage, .textbox, #message, #keywords').focusin(function() {	// When you enter a textbox
 	control = false;												// disable control
 }).focusout(function() {											// When you leave the textbox
@@ -261,7 +268,7 @@ $('#JSMessage, .textbox, #message, #keywords').focusin(function() {	// When you 
 });
 
 // Key combos for message management
-if (pageType = "msg" && control) {
+if (pageType == "msg" && control) {
 	$(document).bind('keydown', 'alt+s', function(){
 		nuke("subs");
 	});
@@ -311,6 +318,9 @@ $(document.documentElement).keyup(function (event) {				// Detect keyboard usage
     else if (event.keyCode == 83 && control) {						// Watch for S key (key 83)
     	goToPage("search");											// Go to search page
     }
+    else if (event.keyCode == 87 && control) {						// Watch for W key (key 87)
+    	watchUser();												// Go to watch url if on user page
+    }
 });
 
 // Debug running
@@ -322,6 +332,7 @@ if (debug) {
 	console.log("Fave link: " + faveLink);
 	console.log("Download link: " + dlLink);
 	console.log("Full link: " + fullLink);
+	console.log("Watch link: " + watchLink);
 	console.log("Control: " + control);
 	console.log("Pagination: " + pagination);
 	console.log("Main section jump: " + mainJump);

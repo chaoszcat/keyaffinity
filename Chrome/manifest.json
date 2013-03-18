@@ -1,7 +1,7 @@
 {
    "manifest_version": 2,
    "name": "KeyAffinity",
-   "version": "1.1.8",
+   "version": "1.1.9.2",
    "description": "Adds keyboard navigation functions to FurAffinity",
    "icons": {
       "128": "icon.png"
