@@ -27,7 +27,8 @@ var prevLink = $('a.prev').attr("href"); 							// Get link to previous submissi
 var nextLink = $('a.next').attr("href"); 							// Get link to next submission
 var faveLink = $('.alt1 a[href*="fav"]').attr("href");				// Get link to fave submission
 var dlLink = $('.alt1 a[href*="facdn.net/art"]').attr("href");		// Get link to download submission
-var watchLink = $('a[href*="watch"]').attr("href");					// Get link to download submission
+var watchLink = $('a[href*="watch"]').attr("href");					// Get link to watch user
+var noteLink = $('a[href*="newpm"]').attr("href");					// Get link to note user
 var fullLink;
 
 // Notification variables
@@ -261,6 +262,12 @@ function watchUser() {
 	}
 }
 
+function noteUser() {
+	if (noteLink != null) {
+		window.location = noteLink;
+	}
+}
+
 $('#JSMessage, .textbox, #message, #keywords').focusin(function() {	// When you enter a textbox
 	control = false;												// disable control
 }).focusout(function() {											// When you leave the textbox
@@ -320,6 +327,9 @@ $(document.documentElement).keyup(function (event) {				// Detect keyboard usage
     }
     else if (event.keyCode == 87 && control) {						// Watch for W key (key 87)
     	watchUser();												// Go to watch url if on user page
+    }
+    else if (event.keyCode == 78 && control) {						// Watch for N key (key 78)
+    	noteUser();													// Go to note url if on user page
     }
 });
 

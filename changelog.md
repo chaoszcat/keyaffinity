@@ -1,5 +1,9 @@
 #KeyAffinity Changelog
 ---
+####1.1.10
+ * Added ability to note a user from their profile using the **N** key
+ * **Not yet available on Firefox due initial review process**
+
 ####1.1.9 (and 1.1.9.2)
  * Added ability to watch a user using the **W** key
  * Fixed page type detection bug (and associated bugs)
