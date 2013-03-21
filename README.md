@@ -3,7 +3,7 @@ KeyAffinity
 
 **[Homepage](http://keyaffinity.k0bi.tk) | [Changelog](https://github.com/kobitate94/keyaffinity/blob/master/changelog.md)**
 
-**Download: [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US)** (v1.1.10) | **[Mozilla Addons](https://addons.mozilla.org/en-US/firefox/addon/keyaffinity/)** (v1.1.6.2r2*) | **[Userscript](http://userscripts.org/scripts/show/154599)** (v1.1.9)
+**Download: [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US)** (v1.2) | **[Mozilla Addons](https://addons.mozilla.org/en-US/firefox/addon/keyaffinity/)** (v1.1.6.2r2*) | **[Userscript](http://userscripts.org/scripts/show/154599)** (v1.1.9)
 
 >*Firefox version under initial review, updates delayed until review is complete
 
@@ -35,6 +35,7 @@ Anywhere:
 	M - Go to new messages page
 	B - Go to browse page
 	S - Go to Search page
+	Alt-? - Toggle Help window
 	
 On Messages Page:
 	
@@ -53,7 +54,6 @@ On a User's profile:
 ---
 * Thumbnail arrow key browsing
   - Coming after FA's Redesign
-* Cheat sheet/help view
 * Previous/Next functionality on Gallery pages
 * Custom keyboard shortcuts
 
