@@ -29,6 +29,7 @@ var faveLink = $('.alt1 a[href*="fav"]').attr("href");				// Get link to fave su
 var dlLink = $('.alt1 a[href*="facdn.net/art"]').attr("href");		// Get link to download submission
 var watchLink = $('a[href*="watch"]').attr("href");					// Get link to watch user
 var noteLink = $('a[href*="newpm"]').attr("href");					// Get link to note user
+var subUser = $('maintable a[href*="user"]').attr("href");			// Get link to current submission user
 var fullLink;
 
 // Notification variables
@@ -51,6 +52,15 @@ $('a[title^="Comments"]').attr("id", "new-comments");
 $('a[title^="Notes"]').attr("id", "new-notes");
 $('a[title^="Trouble"]').attr("id", "new-tickets");
 $('li.noblock:first').attr("id", "notifs"); // Relies on the notifications div being the first noblock li, may want to change
+
+$('li a[href*="Submission-Agreement"]').closest("li").attr("id", "lastsupport");
+
+// Adding tooltip shortcut help
+$("#nuke-watches").attr("title", "(Alt-W)");
+$("#nuke-subs").attr("title", "(Alt-S)");
+$("#nuke-shouts").attr("title", "(Alt-H)");
+$("#nuke-comments").attr("title", "(Alt-C)");
+$("#nuke-journals").attr("title", "(Alt-J)");
 
 // Set booleans to enable and disable some functions (possible use for options page)
 var control = new Boolean();		// Controls all single-key functions
@@ -109,18 +119,65 @@ if (debugParam == "true") {
 
 // Insert the popup boxes
 if (nextLink == null && pagination) {
-	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-endreach\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999 padding-top:40px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">Reached end of gallery</div>");
+	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-endreach\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; padding-top:40px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">Reached end of gallery</div>");
 }
 
 if (prevLink == null && pagination) {
-	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-beginreach\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999 padding-top:40px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">Reached beginning of gallery</div>");
+	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-beginreach\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; padding-top:40px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">Reached beginning of gallery</div>");
 }
 
 if (pagination) {
-	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-favepop\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-25px; width:50px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999 padding-top:10px; padding-bottom:10px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">&hearts;</div>");
+	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-favepop\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-25px; width:50px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; padding-top:10px; padding-bottom:10px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">&hearts;</div>");
 }
 
-$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-nomsgs\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999 padding-top:40px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">No new messages</div>");
+$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-nomsgs\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; padding-top:40px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">No new messages</div>");
+
+// Help window divs
+
+$("#lastsupport").after(""+
+	"<li><hr /><li>"+
+	"<a href=\"#\" id=\"keyaffinity-helpshow\">KeyAffinity Help</a>"+
+"");
+
+$(".footer").before("" +
+	"<!-- inserted by KeyAffinity -->"+
+	"<div id=\"keyaffinity-help\" style=\"display:none; position:fixed; top:150px; left:50%; margin-left:-225px; width:450px; padding:10px; text-align:center;  background-color:rgba(0,0,0,0.7); font-size:20px; z-index:999; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">"+
+	
+	"<div id=\"keyaffinity-helpclose\" style=\" position:absolute; background-color:#CE090F; width:15px; height:15px; border-radius:10px; color:white; font-size: 10px; font-weight:bold; opacity:0.7; right:10px; cursor:pointer;\">X</div>"+
+	
+	"<div style=\"font-weight:bold; border-bottom:solid white 1px; margin-bottom:10px;\">KeyAffinity Help</div>"+
+	
+	"<table width=\"100%\" style=\"font-size:15px;\"><tr style=\"vertical-align:top;\">"+
+		"<td style=\"text-align:left; width:50%; vertical-align:top;\">"+
+		
+			"<strong>Anywhere</strong><br />"+
+			"M - Go to new messages page<br />B - Go to browse page<br />S - Go to Search page<br />"+
+			"<br />"+
+			
+			"<strong>Submission pages</strong><br />"+
+			"&rarr; - Next Submission<br />&larr; - Previous Submission<br />F - Favorite Submission<br />C - Jump to Comment box<br />&nbsp;&nbsp;&nbsp;(also works on Journals)<br />/ - Change image size<br />D - Download submission<br />"+
+			"<br />"+
+			
+		"</td>"+
+		
+		"<td style=\"text-align:left; width:50%;\">"+
+		
+			"<strong>Messages pages</strong><br />"+
+			"Alt-S - Nuke Submissions<br />Alt-C - Nuke Submission Comments<br />Alt-W - Nuke Watches<br />Alt-H - Nuke Shouts<br />Alt-J - Nuke Journals<br />"+
+			"<br />"+
+			
+			"<strong>User profiles</strong><br />"+
+			"W - Watch user<br />N - Note user<br />"+
+			"<br />"+
+			
+		"</td>"+
+	"</tr></table>"+
+	
+	"<div style=\"font-size:8px; opacity:0.7;\"><a href=\"http://keyaffinity.k0bi.tk\">KeyAffinity</a> &copy; 2012-2013 Kobi Tate. Distributed under the terms of GNU GPL v3.</div>"+
+	
+	"</div>");
+
+
 
 if (mainJump) {
 	$('html, body').animate({
@@ -128,7 +185,7 @@ if (mainJump) {
 		}, 0);
 }
 
-// Notification checking
+// Notification div watching function
 jQuery.fn.contentChange = function(callback){
 var elms = jQuery(this);
 elms.each(
@@ -155,42 +212,31 @@ if(window.watchContentChange){
 
 function checkNotifs() {
 	if ($('#new-notes').text() != ""){
-		//window.location = "/msg/pms";
-		newNotifs = true;
-		newNotes = true;
+		newNotifs = true;							// Mark new notifications as true
+		newNotes = true;							// Mark new notes as true
 	}
 	else if ($('#new-comments').text() != "") {
-		//window.location = "/msg/others";
-		newNotifs = true;
-		newComms = true;
+		newNotifs = true;							// Mark new notifications as true
+		newComms = true;							// Mark new comments as true
 	}
 	else if ($('#new-subs').text() != "") {
-		//window.location = "/msg/submissions";
-		newNotifs = true;
-		newSubs = true;
+		newNotifs = true;							// Mark new notifications as true
+		newSubs = true;								// Mark new submissions as true
 	}
 	else if ($('#new-tickets').text() != "") {
-		//window.location = "/msg/troubletickets";
-		newNotifs = true;
-		newTickets = true;
+		newNotifs = true;							// Mark new notifications as true
+		newTickets = true;							// Mark new support tickets as true
 	}
 	else {
-		newNotifs = false;
-	}
-	if (newNotifs && titleNotifs) {
-		var notifStr = $("#notifs").text();
-		var notifStartIndex = notifStr.indexOf("(");
-		var notifEndIndex = notifStr.indexOf(")")+1;
-		notifStr = notifStr.substring(notifStartIndex, notifEndIndex);
-		document.title = notifStr + " " + pageTitle;
+		newNotifs = false;							// Mark new notifications as false
 	}
 }
 
-checkNotifs();
+checkNotifs();										// Check for new notifications each page load
 
-$("#notifs").contentChange(function(){
-	checkNotifs();
-});
+$("#notifs").contentChange(function(){				// When the notifications div changes
+	checkNotifs();									// See what new notications there are
+});													// This is for FA Status compatibility
 
 // Functions for controls
 function prevSub() {
@@ -268,6 +314,15 @@ function noteUser() {
 	}
 }
 
+function toggleHelp() {
+	if ($("#keyaffinity-help").css("display") == "none") {
+		$("#keyaffinity-help").fadeIn();
+	}
+	else {
+		$("#keyaffinity-help").fadeOut();
+	}
+}
+
 $('#JSMessage, .textbox, #message, #keywords').focusin(function() {	// When you enter a textbox
 	control = false;												// disable control
 }).focusout(function() {											// When you leave the textbox
@@ -295,7 +350,21 @@ if (pageType == "msg" && control) {
 	$(document).bind('keydown', 'alt+j', function(){
 		nuke("journals");
 	});
+	
 }
+
+// Help window toggling
+$(document).bind('keydown', 'alt+/', function(){
+	toggleHelp();
+});
+
+$("#keyaffinity-helpshow").mousedown(function(){
+	toggleHelp();
+});
+
+$("#keyaffinity-helpclose").mousedown(function(){
+	toggleHelp();
+});
 
 $(document.documentElement).keyup(function (event) {				// Detect keyboard usage
     if (event.keyCode == 37 && control && pagination) {				// Watch for left arrow (key 37)
@@ -309,9 +378,6 @@ $(document.documentElement).keyup(function (event) {				// Detect keyboard usage
     }
     else if (event.keyCode == 67 && control && comJump) {			// Watch for C key (key 67)
     	comment();													// Jump to comment box
-    }
-    else if (event.keyCode == 191 && control && pagination) {		// Watch for / key (key 191)
-    	sizeChange();												// Shrink/enlarge image
     }
     else if (event.keyCode == 68 && control && pagination) {		// Watch for D key (key 68)
     	download();													// Shrink/enlarge image
@@ -332,6 +398,14 @@ $(document.documentElement).keyup(function (event) {				// Detect keyboard usage
     	noteUser();													// Go to note url if on user page
     }
 });
+
+$(document).bind('keydown', '/', function(){
+	sizeChange();
+});
+
+if (pageType == "newpm") {
+	$('input[name*="subject"]').focus();							// Jump to subject box on notes page
+}
 
 // Debug running
 
@@ -354,7 +428,6 @@ if (debug) {
 	console.log("New support tickets: " + newTix);
 	console.log("New comments: " + newComms);
 	console.log("New notes: " + newNotes);
-	console.log("Title notificaions: " + titleNotifs);
 	/* Options not yet implemented
 	console.log("Options:");
 	console.log("\tSubmission auto-scroll: " + optVar_subjump);
