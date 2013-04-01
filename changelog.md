@@ -10,12 +10,8 @@
  * Rewording some code comments
  * Removal of some excess code
  * General bug fixes
-<<<<<<< HEAD
  * **Not yet available on Firefox due initial review process**
 
-=======
- 
->>>>>>> Update to 1.2.1
 ####1.1.10
  * Added ability to note a user from their profile using the **N** key
 
