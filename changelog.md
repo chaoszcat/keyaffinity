@@ -7,6 +7,7 @@
  * Removal of some excess code
  * General bug fixes
  * **Not yet available on Firefox due initial review process**
+
 ####1.1.10
  * Added ability to note a user from their profile using the **N** key
  * **Not yet available on Firefox due initial review process**
