@@ -119,21 +119,20 @@ if (debugParam == "true") {
 
 // Insert the popup boxes
 if (nextLink == null && pagination) {
-	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-endreach\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; padding-top:40px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">Reached end of gallery</div>");
+	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-endreach\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">Reached end of gallery</div>");
 }
 
 if (prevLink == null && pagination) {
-	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-beginreach\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; padding-top:40px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">Reached beginning of gallery</div>");
+	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-beginreach\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999;border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">Reached beginning of gallery</div>");
 }
 
 if (pagination) {
-	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-favepop\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-25px; width:50px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; padding-top:10px; padding-bottom:10px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">&hearts;</div>");
+	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-favepop\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-25px; width:50px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; padding-bottom:10px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">&hearts;</div>");
 }
 
-$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-nomsgs\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; padding-top:40px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">No new messages</div>");
+$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-nomsgs\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">No new messages</div>");
 
-// Help window divs
-
+// Insert Help window divs
 $("#lastsupport").after(""+
 	"<li><hr /><li>"+
 	"<a href=\"#\" id=\"keyaffinity-helpshow\">KeyAffinity Help</a>"+

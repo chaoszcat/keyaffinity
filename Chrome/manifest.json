@@ -1,14 +1,14 @@
 {
    "manifest_version": 2,
    "name": "KeyAffinity",
-   "version": "1.2",
+   "version": "1.2.1",
    "description": "Adds keyboard navigation functions to FurAffinity",
    "icons": {
       "128": "icon.png"
    },
    "content_scripts": [ {
       "js": [ "assets/jquery.js", "assets/hotkeys.js", "background.js" ],
-      "matches": [ "http://www.furaffinity.net/*" ]
+      "matches": [ "http://www.furaffinity.net/*", "https://www.furaffinity.net/*" ]
    } ],
    "permissions": [
       "http://*.furaffinity.net/*",
