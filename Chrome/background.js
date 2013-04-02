@@ -20,7 +20,159 @@
  *
  */
 
-console.log("KeyAffinity is running");
+console.log("KeyAffinity BETA is running");
+
+
+// Options loading
+var optVar_loaded = localStorage["opt_loaded"];
+
+if (optVar_loaded == null || optVar_loaded == "reset") {
+	localStorage["opt_loaded"] = "true";
+	localStorage["opt_subjump"] = "true";
+	localStorage["opt_debug"] = "false";
+	localStorage["opt_dlredirect"] = "false";
+	window.location = window.location;
+}
+
+var optVar_subjump = localStorage["opt_subjump"];
+var optVar_debug = localStorage["opt_debug"];
+var optVar_dlredirect = localStorage["opt_dlredirect"];
+var popupFooter = "<a href=\"http://keyaffinity.k0bi.tk\">KeyAffinity</a> &copy; 2012-2013 <a href=\"http://k0bi.tk\">Kobi Tate</a>. Distributed under the terms of GNU GPL v3.";
+
+function setOption(name, val) {
+	localStorage["opt_" + name] = val;
+}
+
+function resetDefaults() {
+	localStorage["opt_loaded"] = "reset";
+	localStorage["opt_loaded"] = "true";
+	localStorage["opt_subjump"] = "true";
+	localStorage["opt_debug"] = "false";
+	localStorage["opt_dlredirect"] = "false";
+	alert("Options have been reset. Reloading page.");
+	window.location = window.location;
+}
+
+$(".footer").before("" +
+	"<!-- inserted by KeyAffinity -->"+
+	"<div id=\"keyaffinity-options\" class=\"keyaffinity-bigpop\">"+
+	
+	"<div id=\"keyaffinity-optclose\" class=\"keyaffinity-boxclose\">X</div>"+
+	
+	"<div class=\"keyaffinity-boxtitle\">KeyAffinity Options</div>"+
+	
+	"<form id=\"optionsform\">"+
+	
+	/* "<strong>Enable/Disable Features</strong><br />" + */
+	
+	"<table id=\"toggles\">"+
+	
+		"<tr>"+
+			"<td class=\"right\">Automatically scroll to submissions:</td>"+
+			"<td><input type=\"checkbox\" title=\"opt_subjump\" id=\"opt_subjump\" class=\"optioncheck\" /></td>"+
+		"</tr><tr>"+
+			"<td class=\"right\">Debug Mode:</td>"+
+			"<td><input type=\"checkbox\" title=\"opt_debug\" id=\"opt_debug\" class=\"optioncheck\" /></td>"+
+		"</tr><tr>"+
+			"<td class=\"right\">Auto redirect to download page:</td>"+
+			"<td><input type=\"checkbox\" title=\"opt_dlredirect\" id=\"opt_dlredirect\" class=\"optioncheck\" /></td>"+
+		"</tr>" +	
+		
+	"</table>" +
+	/*
+	
+	// Still working on getting custom keys to work properly
+	
+	"<strong>Custom keyboard shortcuts</strong><br />" +
+	
+	"<table id=\"customkeys\">"+
+	
+		"<tr>"+
+			"<td class=\"right\">Next submission:</td>"+
+			"<td><input type=\"text\" title=\"opt_key_nextsub\" id=\"opt_key_nextsub\" class=\"customkeybox\" value=\"&rarr;\" /></td>"+
+		"</tr><tr>"+
+			"<td class=\"right\">Previous submission:</td>"+
+			"<td><input type=\"text\" title=\"opt_key_prevsub\" id=\"opt_key_prevsub\" class=\"customkeybox\" value=\"&larr;\" /></td>"+
+		"</tr><tr>"+
+			"<td class=\"right\">Favorite submission:</td>"+
+			"<td><input type=\"text\" title=\"opt_key_favesub\" id=\"opt_key_favesub\" class=\"customkeybox\" value=\"F\" /></td>"+
+		"</tr><tr>" +
+			"<td class=\"right\">Comment box jump:</td>"+
+			"<td><input type=\"text\" title=\"opt_key_comjump\" id=\"opt_key_comjump\" class=\"customkeybox\" value=\"C\" /></td>"+
+		"</tr><tr>" +
+			"<td class=\"right\">Change image size:</td>"+
+			"<td><input type=\"text\" title=\"opt_key_sizechange\" id=\"opt_key_sizechange\" class=\"customkeybox\" value=\"/\" /></td>"+
+		"</tr><tr>" +	
+			"<td class=\"right\">Go to download page:</td>"+
+			"<td><input type=\"text\" title=\"opt_key_dlsub\" id=\"opt_key_dlsub\" class=\"customkeybox\" value=\"D\" /></td>"+
+		"</tr>" +
+		
+	"</table>" +
+	*/
+	"<div id=\"keyaffinity-optsave\">"+
+		"<input type=\"submit\" value=\"Save\" id=\"keyaffinity-optsubmit\" class=\"optsavebutton\" />"+
+		"<button type=\"button\" id=\"keyaffinity-optreset\" class=\"optsavebutton\">Reset Defaults</button>"+
+	"</div>"+
+
+	"</form>"+
+	
+	"<div class=\"keyaffinity-popfooter\"><strong>More options coming soon!</strong><br />" + popupFooter + "</div>"+
+	
+	"</div>");
+	
+	
+$("#keyaffinity-optreset").mousedown(function(){
+	resetDefaults();
+})
+
+if (optVar_subjump == "true") {
+	$("input:checkbox#opt_subjump").attr("checked", "checked");
+}
+else {
+	$("input:checkbox#opt_subjump").removeAttr("checked");
+}
+
+if (optVar_debug == "true") {
+	$("input:checkbox#opt_debug").attr("checked", "checked");
+}
+else {
+	$("input:checkbox#opt_debug").removeAttr("checked");
+}
+
+if (optVar_dlredirect == "true") {
+	$("input:checkbox#opt_dlredirect").attr("checked", "checked");
+}
+else {
+	$("input:checkbox#opt_dlredirect").removeAttr("checked");
+}
+
+$("#optionsform").submit(function(){
+
+	// Set Submission jumping
+	if ($("input:checkbox#opt_subjump").is(":checked")) {
+		setOption("subjump", "true");
+	}
+	else {
+		setOption("subjump", "false");
+	}
+
+	// Set Debugging
+	if ($("input:checkbox#opt_debug").is(":checked")) {
+		setOption("debug", "true");
+	}
+	else {
+		setOption("debug", "false");
+	}
+	
+	// Set Download redirect
+	if ($("input:checkbox#opt_dlredirect").is(":checked")) {
+		setOption("dlredirect", "true");
+	}
+	else {
+		setOption("dlredirect", "false");
+	}
+
+});
 
 // Link grabbing
 var prevLink = $('a.prev').attr("href"); 							// Get link to previous submission
@@ -67,11 +219,36 @@ var control = new Boolean();		// Controls all single-key functions
 var pagination = new Boolean();		// Left/right arrow keys, disabled on non-submission pages
 var mainJump = new Boolean();		// jumping to main section of page, disabled on non-submission pages
 var comJump = new Boolean();		// Comment textbox jumping
+var optDebug = new Boolean();		// Debug option
+var dlRedirect = new Boolean(); 	// Automatically redirect to download page
 control = true;
 pagination = true;
 comJump = true;
-mainJump = true;
 
+// Other variables
+var boxFadeSpeed = 300;
+
+// Options setting
+if (optVar_subjump == "true") {
+	mainJump = true;
+}
+else {
+	mainJump = false;
+}
+
+if (optVar_debug == "true") {
+	optDebug = true;
+}
+else {
+	optDebug = false;
+}
+
+if (optVar_dlredirect == "true") {
+	dlRedirect = true;
+}
+else {
+	dlRedirect = false;
+}
 
 var pathArray = window.location.pathname.split( '/' );				// Get current page, place in array
 var pageType = pathArray[1];										// Grab page type (view, journal, full, etc.) from URL
@@ -97,6 +274,11 @@ if (pageType != "view" && pageType != "full" && pageType != "fav"){
 	mainJump = false;
 }
 
+// Redirect to download page if on submission and option is enabled
+if (dlRedirect && pageType == "view") {
+	window.location = dlLink;
+}
+
 // Debugging stuff
 function getUrlVars() {
 	var vars = [], hash;
@@ -111,46 +293,60 @@ function getUrlVars() {
 }
 
 var debugParam = getUrlVars()["ka-debug"];
+var showOpt = getUrlVars()["ka-options"];
+var showHelp = getUrlVars()["ka-help"];
 
-if (debugParam == "true") {
+if (debugParam == "true" || optDebug) {
 	var debug = true;
+}
+
+if (showOpt == "true") {
+	toggleOpt(0);
+}
+
+if (showHelp == "true") {
+	toggleHelp(0);
 }
 
 
 // Insert the popup boxes
 if (nextLink == null && pagination) {
-	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-endreach\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">Reached end of gallery</div>");
+	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-endreach\" class=\"keyaffinity-popup\">Reached end of gallery</div>");
 }
 
 if (prevLink == null && pagination) {
-	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-beginreach\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999;border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">Reached beginning of gallery</div>");
+	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-beginreach\"  class=\"keyaffinity-popup\">Reached beginning of gallery</div>");
 }
 
 if (pagination) {
-	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-favepop\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-25px; width:50px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; padding-bottom:10px; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">&hearts;</div>");
+	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-favepop\"  class=\"keyaffinity-popup\">&hearts;</div>");
 }
 
-$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-nomsgs\" style=\"display:none; position:fixed; top:300px; left:50%; margin-left:-300px; width:600px; height:50px; text-align:center;  background-color:rgba(0,0,0,0.5); font-size:40px; z-index:999; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">No new messages</div>");
+$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-nomsgs\" class=\"keyaffinity-popup\">No new messages</div>");
 
 // Insert Help window divs
 $("#lastsupport").after(""+
 	"<li><hr /><li>"+
 	"<a href=\"#\" id=\"keyaffinity-helpshow\">KeyAffinity Help</a>"+
+	"<a href=\"#\" id=\"keyaffinity-optshow\">KeyAffinity Options</a>"+
 "");
 
-$(".footer").before("" +
+
+	
+	$(".footer").before("" +
 	"<!-- inserted by KeyAffinity -->"+
-	"<div id=\"keyaffinity-help\" style=\"display:none; position:fixed; top:150px; left:50%; margin-left:-225px; width:450px; padding:10px; text-align:center;  background-color:rgba(0,0,0,0.7); font-size:20px; z-index:999; border-radius:10px; color:white; -webkit-box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3); box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.3);\">"+
+	"<div id=\"keyaffinity-help\" class=\"keyaffinity-bigpop\">"+
 	
-	"<div id=\"keyaffinity-helpclose\" style=\" position:absolute; background-color:#CE090F; width:15px; height:15px; border-radius:10px; color:white; font-size: 10px; font-weight:bold; opacity:0.7; right:10px; cursor:pointer;\">X</div>"+
+	"<div id=\"keyaffinity-helpclose\" class=\"keyaffinity-boxclose\">X</div>"+
 	
-	"<div style=\"font-weight:bold; border-bottom:solid white 1px; margin-bottom:10px;\">KeyAffinity Help</div>"+
+	"<div class=\"keyaffinity-boxtitle\">KeyAffinity Help</div>"+
 	
-	"<table width=\"100%\" style=\"font-size:15px;\"><tr style=\"vertical-align:top;\">"+
-		"<td style=\"text-align:left; width:50%; vertical-align:top;\">"+
+	"<table>"+
+	"<tr>"+
+		"<td>"+
 		
 			"<strong>Anywhere</strong><br />"+
-			"M - Go to new messages page<br />B - Go to browse page<br />S - Go to Search page<br />"+
+			"M - Go to new messages page<br />B - Go to browse page<br />S - Go to Search page<br />Alt-? - KA Help (also via Support dropdown)"+
 			"<br />"+
 			
 			"<strong>Submission pages</strong><br />"+
@@ -159,7 +355,7 @@ $(".footer").before("" +
 			
 		"</td>"+
 		
-		"<td style=\"text-align:left; width:50%;\">"+
+		"<td>"+
 		
 			"<strong>Messages pages</strong><br />"+
 			"Alt-S - Nuke Submissions<br />Alt-C - Nuke Submission Comments<br />Alt-W - Nuke Watches<br />Alt-H - Nuke Shouts<br />Alt-J - Nuke Journals<br />"+
@@ -170,9 +366,10 @@ $(".footer").before("" +
 			"<br />"+
 			
 		"</td>"+
-	"</tr></table>"+
+	"</tr>"+
+	"</table>"+
 	
-	"<div style=\"font-size:8px; opacity:0.7;\"><a href=\"http://keyaffinity.k0bi.tk\">KeyAffinity</a> &copy; 2012-2013 Kobi Tate. Distributed under the terms of GNU GPL v3.</div>"+
+	"<div class=\"keyaffinity-popfooter\">" + popupFooter + "</div>"+
 	
 	"</div>");
 
@@ -183,6 +380,9 @@ if (mainJump) {
 		scrollTop: $('.innertable').offset().top 					// Scroll to main section of page if jumping is enabled
 		}, 0);
 }
+
+// Options popup
+
 
 // Notification div watching function
 jQuery.fn.contentChange = function(callback){
@@ -313,12 +513,28 @@ function noteUser() {
 	}
 }
 
-function toggleHelp() {
+function toggleHelp(fadeSpeed) {
 	if ($("#keyaffinity-help").css("display") == "none") {
-		$("#keyaffinity-help").fadeIn();
+		$("#keyaffinity-help").fadeIn(fadeSpeed);
 	}
 	else {
-		$("#keyaffinity-help").fadeOut();
+		$("#keyaffinity-help").fadeOut(fadeSpeed);
+	}
+	
+	if ($("#keyaffinity-options").css("display") != "none") {
+		$("#keyaffinity-options").fadeOut(fadeSpeed);
+	}
+}
+
+function toggleOpt(fadeSpeed) {
+	if ($("#keyaffinity-options").css("display") == "none") {
+		$("#keyaffinity-options").fadeIn(fadeSpeed);
+	}
+	else {
+		$("#keyaffinity-options").fadeOut(fadeSpeed);
+	}
+	if ($("#keyaffinity-help").css("display") != "none") {
+		$("#keyaffinity-help").fadeOut(fadeSpeed);
 	}
 }
 
@@ -354,16 +570,25 @@ if (pageType == "msg" && control) {
 
 // Help window toggling
 $(document).bind('keydown', 'alt+/', function(){
-	toggleHelp();
+	toggleHelp(boxFadeSpeed);
 });
 
 $("#keyaffinity-helpshow").mousedown(function(){
-	toggleHelp();
+	toggleHelp(boxFadeSpeed);
+});
+
+$("#keyaffinity-optshow").mousedown(function(){
+	toggleOpt(boxFadeSpeed);
 });
 
 $("#keyaffinity-helpclose").mousedown(function(){
-	toggleHelp();
+	toggleHelp(boxFadeSpeed);
 });
+
+$("#keyaffinity-optclose").mousedown(function(){
+	toggleOpt(boxFadeSpeed);
+});
+
 
 $(document.documentElement).keyup(function (event) {				// Detect keyboard usage
     if (event.keyCode == 37 && control && pagination) {				// Watch for left arrow (key 37)
@@ -427,11 +652,10 @@ if (debug) {
 	console.log("New support tickets: " + newTix);
 	console.log("New comments: " + newComms);
 	console.log("New notes: " + newNotes);
-	/* Options not yet implemented
 	console.log("Options:");
 	console.log("\tSubmission auto-scroll: " + optVar_subjump);
 	console.log("\tDebug Mode: " + optVar_debug);
-	*/
+	console.log("\tDownload redirect: " + optVar_dlredirect);
 	console.log("~~ KeyAffinity Debugging ~~\n\n");
 	
 }

@@ -1,5 +1,10 @@
 #KeyAffinity Changelog
 ---
+####1.3
+ * Added ability to enable/disable functionality (Support > Options on FurAffinity page)
+ * Added option to automatically redirect to the download page for a submission (enable in Support > Options)
+ * Removed inline CSS styles
+
 ####1.2.1
  * Fixed KeyAffinity not running on secure pages
  * Minor aesthetic changes to popup boxes
