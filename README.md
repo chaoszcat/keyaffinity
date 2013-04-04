@@ -63,6 +63,7 @@ On a User's profile:
 * No shortcut for nuking Journal Comments.
 * Control - W (and theoretically Cmd - W) causes Watch/Unwatch to trigger if next tab is a user page
 * Popup box links unreadable in FA Light theme
+* **Firefox**: End-of-gallery detection not working (found by Mozilla Reviewer)
 
 
 ###Special Thanks
