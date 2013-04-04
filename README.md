@@ -3,9 +3,9 @@ KeyAffinity
 
 **[Homepage](http://keyaffinity.k0bi.tk) | [Changelog](https://github.com/kobitate94/keyaffinity/blob/master/changelog.md)**
 
-**Download: [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US)** (v1.3) | **[Userscript](http://userscripts.org/scripts/show/154599)** (v1.1.9)
+**Download: [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US)** (v1.3.1) | **[Firefox](https://addons.mozilla.org/en-US/firefox/addon/keyaffinity/)** (v1.3.1b)
 
->*Firefox version under initial review, updates delayed until review is complete
+>*Firefox version under initial review
 
 ###About
 
@@ -62,6 +62,7 @@ On a User's profile:
 
 * No shortcut for nuking Journal Comments.
 * Control - W (and theoretically Cmd - W) causes Watch/Unwatch to trigger if next tab is a user page
+* Popup box links unreadable in FA Light theme
 
 
 ###Special Thanks

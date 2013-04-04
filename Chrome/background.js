@@ -20,18 +20,21 @@
  *
  */
 
-console.log("KeyAffinity BETA is running");
+console.log("KeyAffinity is running");
 
 
 // Options loading
 var optVar_loaded = localStorage["opt_loaded"];
 
-if (optVar_loaded == null || optVar_loaded == "reset") {
+function resetDefaults() {
 	localStorage["opt_loaded"] = "true";
 	localStorage["opt_subjump"] = "true";
 	localStorage["opt_debug"] = "false";
 	localStorage["opt_dlredirect"] = "false";
 	window.location = window.location;
+}
+if (optVar_loaded == null || optVar_loaded == "reset") {
+	resetDefaults();
 }
 
 var optVar_subjump = localStorage["opt_subjump"];
@@ -43,15 +46,7 @@ function setOption(name, val) {
 	localStorage["opt_" + name] = val;
 }
 
-function resetDefaults() {
-	localStorage["opt_loaded"] = "reset";
-	localStorage["opt_loaded"] = "true";
-	localStorage["opt_subjump"] = "true";
-	localStorage["opt_debug"] = "false";
-	localStorage["opt_dlredirect"] = "false";
-	alert("Options have been reset. Reloading page.");
-	window.location = window.location;
-}
+
 
 $(".footer").before("" +
 	"<!-- inserted by KeyAffinity -->"+
@@ -329,11 +324,12 @@ $("#lastsupport").after(""+
 	"<li><hr /><li>"+
 	"<a href=\"#\" id=\"keyaffinity-helpshow\">KeyAffinity Help</a>"+
 	"<a href=\"#\" id=\"keyaffinity-optshow\">KeyAffinity Options</a>"+
+	"<a href=\"#\" id=\"keyaffinity-aboutshow\">About KeyAffinity</a>"+
 "");
 
 
 	
-	$(".footer").before("" +
+$(".footer").before("" +
 	"<!-- inserted by KeyAffinity -->"+
 	"<div id=\"keyaffinity-help\" class=\"keyaffinity-bigpop\">"+
 	
@@ -373,7 +369,39 @@ $("#lastsupport").after(""+
 	
 	"</div>");
 
-
+// About window
+$(".footer").before("" +
+	"<!-- inserted by KeyAffinity -->"+
+	"<div id=\"keyaffinity-about\" class=\"keyaffinity-bigpop\">"+
+	
+	"<div id=\"keyaffinity-aboutclose\" class=\"keyaffinity-boxclose\">X</div>"+
+	
+	"<div class=\"keyaffinity-boxtitle\">About KeyAffinity</div>"+
+	
+	"<div id=\"keyaffinity-abouttext\">" +
+		
+		"KeyAffinity is a project from the strange mind of <a href=\"http://k0bi.tk\">Kobi Tate</a>.<br /><br />" +
+		"It started out as a short project to pass the time, but has turned into quite an undertaking and I hope you will find it as useful as I have. If you enjoy this extension, you can support it by simply spreading the word or by <a href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CJVJ8XMMGH37J\">donating via Paypal</a> to support further development and to prove to my parents this isn't a waste of time.<br /><br />"+
+		"KeyAffinity uses the following resources:"+
+		"<ul>"+
+			"<li><a href=\"http://jquery.com\">jQuery</a></li>"+
+			"<li><a href=\"http://github.com/tzuryby/hotkeys\">jQuery hotkeys</a></li>"+
+			"<li>And numerous snippets from StackOverflow that I've lost track of</li>"+
+		"</ul><br /><br />"+
+		"I would also like to send a special thank you to the following people for their assistance in this project:"+
+		"<ul>"+
+			"<li>Mai, who supported my addiction to coding and provided ideas and such as KeyAffinity grew.</li>"+
+			"<li>Users who submitted Feedback on the FA Forums and GetSatisfaction, specifically Kakurady Drakenar, who motivated me to work on this again after I had let it be for a while.</li>"+
+			"<li>My parents, who put up with me having furry art on my screen around them as I worked on this extension obsessively.</li>"+
+		"</ul><br /><br />"+
+		
+		"<div id=\"keyaffinity-aboutlinks\"><a href=\"http://keyaffinity.k0bi.tk\">Official Website</a> <a href=\"https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa\">Chrome Web Store</a> <a href=\"https://getsatisfaction.com/keyaffinity\">Feedback</a> <a href=\"http://github.com/kobitate94/keyaffinity\">GitHub</a>"+
+		
+	"</div>"+
+	
+	"<div class=\"keyaffinity-popfooter\">" + popupFooter + "</div>"+
+	
+	"</div>");
 
 if (mainJump) {
 	$('html, body').animate({
@@ -524,6 +552,9 @@ function toggleHelp(fadeSpeed) {
 	if ($("#keyaffinity-options").css("display") != "none") {
 		$("#keyaffinity-options").fadeOut(fadeSpeed);
 	}
+	if ($("#keyaffinity-about").css("display") != "none") {
+		$("#keyaffinity-about").fadeOut(fadeSpeed);
+	}
 }
 
 function toggleOpt(fadeSpeed) {
@@ -535,6 +566,24 @@ function toggleOpt(fadeSpeed) {
 	}
 	if ($("#keyaffinity-help").css("display") != "none") {
 		$("#keyaffinity-help").fadeOut(fadeSpeed);
+	}
+	if ($("#keyaffinity-about").css("display") != "none") {
+		$("#keyaffinity-about").fadeOut(fadeSpeed);
+	}
+}
+
+function toggleAbout(fadeSpeed) {
+	if ($("#keyaffinity-about").css("display") == "none") {
+		$("#keyaffinity-about").fadeIn(fadeSpeed);
+	}
+	else {
+		$("#keyaffinity-about").fadeOut(fadeSpeed);
+	}
+	if ($("#keyaffinity-help").css("display") != "none") {
+		$("#keyaffinity-help").fadeOut(fadeSpeed);
+	}
+	if ($("#keyaffinity-options").css("display") != "none") {
+		$("#keyaffinity-options").fadeOut(fadeSpeed);
 	}
 }
 
@@ -577,18 +626,27 @@ $("#keyaffinity-helpshow").mousedown(function(){
 	toggleHelp(boxFadeSpeed);
 });
 
-$("#keyaffinity-optshow").mousedown(function(){
-	toggleOpt(boxFadeSpeed);
-});
-
 $("#keyaffinity-helpclose").mousedown(function(){
 	toggleHelp(boxFadeSpeed);
+});
+
+// Option window toggling
+$("#keyaffinity-optshow").mousedown(function(){
+	toggleOpt(boxFadeSpeed);
 });
 
 $("#keyaffinity-optclose").mousedown(function(){
 	toggleOpt(boxFadeSpeed);
 });
 
+// About window toggling
+$("#keyaffinity-aboutshow").mousedown(function(){
+	toggleAbout(boxFadeSpeed);
+});
+
+$("#keyaffinity-aboutclose").mousedown(function(){
+	toggleAbout(boxFadeSpeed);
+});
 
 $(document.documentElement).keyup(function (event) {				// Detect keyboard usage
     if (event.keyCode == 37 && control && pagination) {				// Watch for left arrow (key 37)

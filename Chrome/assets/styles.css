@@ -36,6 +36,24 @@
 	box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3);
 }
 
+.keyaffinity-medpop {
+	display: none;
+	position: fixed;
+	top: 150px;
+	left: 50%;
+	margin-left: -150px;
+	width: 300px;
+	padding: 10px;
+	text-align: center;
+	background-color: rgba(0,0,0,0.7);
+	font-size: 20px;
+	z-index: 999;
+	border-radius: 10px;
+	color: white;
+	-webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3);
+}
+
 .keyaffinity-boxclose {
 	position: absolute;
 	background-color: #CE090F;
@@ -105,4 +123,23 @@ td.right {
 .keyaffinity-popfooter strong {
 	font-size: 10px;
 	letter-spacing: 1px;
+}
+
+/* About box */
+#keyaffinity-abouttext {
+	font-size: 10px;
+	text-align: center;
+}
+
+#keyaffinity-abouttext ul {
+   text-align: left;
+}
+
+#keyaffinity-aboutlinks {
+	font-size: 12px;
+	margin-bottom: 20px;
+}
+
+#keyaffinity-aboutlinks a {
+	padding: 0 7px;
 }

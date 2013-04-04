@@ -1,5 +1,8 @@
 #KeyAffinity Changelog
 ---
+####1.1.3
+ * Added about page
+
 ####1.3
  * Added ability to enable/disable functionality (Support > Options on FurAffinity page)
  * Added option to automatically redirect to the download page for a submission (enable in Support > Options)
@@ -15,7 +18,6 @@
  * Rewording some code comments
  * Removal of some excess code
  * General bug fixes
- * **Not yet available on Firefox due initial review process**
 
 ####1.1.10
  * Added ability to note a user from their profile using the **N** key
