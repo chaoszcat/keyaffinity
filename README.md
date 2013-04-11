@@ -3,9 +3,7 @@ KeyAffinity
 
 **[Homepage](http://keyaffinity.k0bi.tk) | [Changelog](https://github.com/kobitate94/keyaffinity/blob/master/changelog.md)**
 
-**Download: [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US)** (v1.3.1) | **[Firefox](https://addons.mozilla.org/en-US/firefox/addon/keyaffinity/)** (v1.3.1b)
-
->*Firefox version under initial review
+**Download: [Chrome Web Store](https://chrome.google.com/webstore/detail/keyaffinity/jijefnemlojbcmplfaiklanbbcpeacaa?hl=en-US)** (v1.3.1) | **[Firefox](https://addons.mozilla.org/en-US/firefox/addon/keyaffinity/)** (v1.3.1d)
 
 ###About
 
@@ -56,6 +54,7 @@ On a User's profile:
   - Coming after FA's Redesign
 * Previous/Next functionality on Gallery pages
 * Custom keyboard shortcuts
+* Localization of options, about, etc. (at least Spanish)
 
 ###Known Bugs
 ---
@@ -64,6 +63,7 @@ On a User's profile:
 * Control - W (and theoretically Cmd - W) causes Watch/Unwatch to trigger if next tab is a user page
 * Popup box links unreadable in FA Light theme
 * **Firefox**: End-of-gallery detection not working (found by Mozilla Reviewer)
+* Jumping to submission after clicking on a new comment notification. (workaround: disable submission jump in options)
 
 
 ###Special Thanks
