@@ -8,7 +8,7 @@
  "manifest": {
   "keyaffinity/main": {
    "docsSHA256": null, 
-   "jsSHA256": "fc6f9b9dd3c7053cfef272a8fc125c9fde8a90c8c2d3d34957de93f2c91fa91e", 
+   "jsSHA256": "56cd85e976e3d298e5a9b36086c2443ca23061b2b52d7336a9c723d50330dd1f", 
    "moduleName": "main", 
    "packageName": "keyaffinity", 
    "requirements": {
@@ -38,7 +38,7 @@
    "description": "http://keyaffinity.k0bi.tk", 
    "main": "main", 
    "name": "keyaffinity", 
-   "version": "1.3.1b.rev60"
+   "version": "1.3.1d"
   }
  }, 
  "name": "keyaffinity", 
