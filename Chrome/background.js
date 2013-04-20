@@ -52,9 +52,7 @@ var loc_opt_autoScroll	 = 	chrome.i18n.getMessage("opt_autoScroll");
 var loc_opt_debug		 = 	chrome.i18n.getMessage("opt_debug");
 var loc_opt_autoRedirect = 	chrome.i18n.getMessage("opt_autoRedirect");
 var loc_opt_save		 = 	chrome.i18n.getMessage("opt_save");
-
 var loc_opt_resetDefs	 = 	chrome.i18n.getMessage("opt_resetDefs");
-
 var loc_about_title		 = 	chrome.i18n.getMessage("about_title");
 var loc_endGallery		 = 	chrome.i18n.getMessage("endGallery");
 var loc_beginGallery	 = 	chrome.i18n.getMessage("beginGallery");
