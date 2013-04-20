@@ -1,0 +1,134 @@
+{
+  "appDesc": {
+    "message": "Adds keyboard navigation functions to FurAffinity", 
+    "description":"The description of the application, displayed in the web store."
+  },
+  "help_title" : {
+	  "message": "KeyAffinity Help",
+	  "description": "Title used in Support menu and in Help window"
+  },
+  "help_goMsg" : {
+	  "message": "Go to new messages page",
+	  "description": "Description for help window"
+  },
+  "help_goBrowse" : {
+	  "message": "Go to browse page",
+	  "description": "Description for help window"
+  },
+  "help_goSearch" : {
+	  "message": "Go to search page",
+	  "description": "Description for help window"
+  },
+  "help_helpToggle" : {
+	  "message": "KA Help (also via Support dropdown)",
+	  "description": "Description for help window"
+  },
+  "help_nextSub" : {
+	  "message": "Next Submission",
+	  "description": "Description for help window"
+  },
+  "help_prevSub" : {
+	  "message": "Previous Submission",
+	  "description": "Description for help window"
+  },
+  "help_faveSub" : {
+	  "message": "Favorite submission",
+	  "description": "Description for help window"
+  },
+  "help_toComment" : {
+	  "message": "Jump to comment box (also works on journal pages)",
+	  "description": "Description for help window"
+  },
+  "help_imageSize" : {
+	  "message": "Change image size",
+	  "description": "Description for help window"
+  },
+  "help_download" : {
+	  "message": "Download submission",
+	  "description": "Description for help window"
+  },
+  "help_nukeSubs" : {
+	  "message": "Nuke submissions",
+	  "description": "Description for help window"
+  },
+  "help_nukeSubComs" : {
+	  "message": "Nuke submission comments",
+	  "description": "Description for help window"
+  },
+  "help_nukeWatches" : {
+	  "message": "Nuke watches",
+	  "description": "Description for help window"
+  },
+  "help_nukeShouts" : {
+	  "message": "Nuke shouts",
+	  "description": "Description for help window"
+  },
+  "help_nukeJourns" : {
+	  "message": "Nuke journals",
+	  "description": "Description for help window"
+  },
+  "help_watchUser" : {
+	  "message": "Watch user",
+	  "description": "Description for help window"
+  },
+  "help_noteUser" : {
+	  "message": "Note user",
+	  "description": "Description for help window"
+  },
+  "help_anywhere" : {
+	  "message": "Anywhere",
+	  "description": "Description for help window"
+  },
+  "help_subPages" : {
+	  "message": "Submission pages",
+	  "description": "Description for help window"
+  },
+  "help_msgPages" : {
+	  "message": "Messages pages",
+	  "description": "Description for help window"
+  },
+  "help_userProfs" : {
+	  "message": "User profiles",
+	  "description": "Description for help window"
+  },
+  "opt_title" : {
+	  "message": "KeyAffinity Options",
+	  "description": "Title for options window and Support dropdown"
+  },
+  "opt_autoScroll" : {
+	  "message": "Automatically scroll to submissions",
+	  "description": "Description for options window"
+  },
+  "opt_debug" : {
+	  "message": "Debug mode",
+	  "description": "Description for options window"
+  },
+  "opt_autoRedirect" : {
+	  "message": "Automatically redirect to download page",
+	  "description": "Description for options window"
+  },
+  "opt_save" : {
+	  "message": "Save",
+	  "description": "Options save button"
+  },
+  "opt_resetDef" : {
+	  "message": "Reset Defaults",
+	  "description": "Options reset defaults button"
+  },
+  "about_title" : {
+	  "message": "About KeyAffinity",
+	  "description": "Title for options window and Support dropdown"
+  },
+  "endGallery" : {
+	  "message": "Reached end of gallery",
+	  "description": "Displays when the user reaches the last submission in a gallery"
+  },
+  "beginGallery" : {
+	  "message": "Reached beginning of gallery",
+	  "description": "Displays when the user reaches the first submission in a gallery"
+  },
+  "noMessages" : {
+	  "message": "No new messages",
+	  "description": "Displays when the user tries to go to the new messages page and there are no messages"
+  }
+}

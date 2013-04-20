@@ -22,8 +22,46 @@
 
 console.log("KeyAffinity is running");
 
+// Comments with exclaimation points are my IDE's bookmarks
 
-// Options loading
+//!Localization
+var loc_help_title 		 = 	chrome.i18n.getMessage("help_title");
+var loc_help_goMsg 		 =	chrome.i18n.getMessage("help_goMsg");
+var loc_help_goBrowse 	 =	chrome.i18n.getMessage("help_goBrowse");
+var loc_help_goSearch 	 = 	chrome.i18n.getMessage("help_goSearch");
+var loc_help_helpToggle  = 	chrome.i18n.getMessage("help_helpToggle");
+var loc_help_nextSub 	 = 	chrome.i18n.getMessage("help_nextSub");
+var loc_help_prevSub 	 = 	chrome.i18n.getMessage("help_prevSub");
+var loc_help_faveSub 	 = 	chrome.i18n.getMessage("help_faveSub");
+var loc_help_toComment 	 = 	chrome.i18n.getMessage("help_toComment");
+var loc_help_imageSize 	 = 	chrome.i18n.getMessage("help_imageSize");
+var loc_help_download 	 = 	chrome.i18n.getMessage("help_download");
+var loc_help_nukeSubs 	 = 	chrome.i18n.getMessage("help_nukeSubs");
+var loc_help_nukeSubComs = 	chrome.i18n.getMessage("help_nukeSubComs");
+var loc_help_nukeWatches = 	chrome.i18n.getMessage("help_nukeWatches");
+var loc_help_nukeShouts	 = 	chrome.i18n.getMessage("help_nukeShouts");
+var loc_help_nukeJourns	 = 	chrome.i18n.getMessage("help_nukeJourns");
+var loc_help_watchUser	 = 	chrome.i18n.getMessage("help_watchUser");
+var loc_help_noteUser	 = 	chrome.i18n.getMessage("help_noteUser");
+var loc_help_anywhere	 = 	chrome.i18n.getMessage("help_anywhere");
+var loc_help_subPages	 = 	chrome.i18n.getMessage("help_subPages");
+var loc_help_msgPages	 = 	chrome.i18n.getMessage("help_msgPages");
+var loc_help_userProfs	 = 	chrome.i18n.getMessage("help_userProfs");
+var loc_opt_title		 = 	chrome.i18n.getMessage("opt_title");
+var loc_opt_autoScroll	 = 	chrome.i18n.getMessage("opt_autoScroll");
+var loc_opt_debug		 = 	chrome.i18n.getMessage("opt_debug");
+var loc_opt_autoRedirect = 	chrome.i18n.getMessage("opt_autoRedirect");
+var loc_opt_save		 = 	chrome.i18n.getMessage("opt_save");
+
+var loc_opt_resetDefs	 = 	chrome.i18n.getMessage("opt_resetDefs");
+
+var loc_about_title		 = 	chrome.i18n.getMessage("about_title");
+var loc_endGallery		 = 	chrome.i18n.getMessage("endGallery");
+var loc_beginGallery	 = 	chrome.i18n.getMessage("beginGallery");
+var loc_noMessages		 = 	chrome.i18n.getMessage("noMessages");
+// END CHROME-SPECIFIC CODE
+
+//!Options loading
 var optVar_loaded = localStorage["opt_loaded"];
 
 function resetDefaults() {
@@ -46,15 +84,14 @@ function setOption(name, val) {
 	localStorage["opt_" + name] = val;
 }
 
-
-
+//!Inserting Options window
 $(".footer").before("" +
 	"<!-- inserted by KeyAffinity -->"+
 	"<div id=\"keyaffinity-options\" class=\"keyaffinity-bigpop\">"+
 	
 	"<div id=\"keyaffinity-optclose\" class=\"keyaffinity-boxclose\">X</div>"+
 	
-	"<div class=\"keyaffinity-boxtitle\">KeyAffinity Options</div>"+
+	"<div class=\"keyaffinity-boxtitle\">"+ loc_opt_title +"</div>"+
 	
 	"<form id=\"optionsform\">"+
 	
@@ -63,13 +100,13 @@ $(".footer").before("" +
 	"<table id=\"toggles\">"+
 	
 		"<tr>"+
-			"<td class=\"right\">Automatically scroll to submissions:</td>"+
+			"<td class=\"right\">" + loc_opt_autoScroll +"</td>"+
 			"<td><input type=\"checkbox\" title=\"opt_subjump\" id=\"opt_subjump\" class=\"optioncheck\" /></td>"+
 		"</tr><tr>"+
-			"<td class=\"right\">Debug Mode:</td>"+
+			"<td class=\"right\">"+ loc_opt_debug +"</td>"+
 			"<td><input type=\"checkbox\" title=\"opt_debug\" id=\"opt_debug\" class=\"optioncheck\" /></td>"+
 		"</tr><tr>"+
-			"<td class=\"right\">Auto redirect to download page:</td>"+
+			"<td class=\"right\">"+ loc_opt_autoRedirect +"</td>"+
 			"<td><input type=\"checkbox\" title=\"opt_dlredirect\" id=\"opt_dlredirect\" class=\"optioncheck\" /></td>"+
 		"</tr>" +	
 		
@@ -77,6 +114,7 @@ $(".footer").before("" +
 	/*
 	
 	// Still working on getting custom keys to work properly
+	// @TODO: Finish, Localize
 	
 	"<strong>Custom keyboard shortcuts</strong><br />" +
 	
@@ -105,8 +143,8 @@ $(".footer").before("" +
 	"</table>" +
 	*/
 	"<div id=\"keyaffinity-optsave\">"+
-		"<input type=\"submit\" value=\"Save\" id=\"keyaffinity-optsubmit\" class=\"optsavebutton\" />"+
-		"<button type=\"button\" id=\"keyaffinity-optreset\" class=\"optsavebutton\">Reset Defaults</button>"+
+		"<input type=\"submit\" value=\""+ loc_opt_save +"\" id=\"keyaffinity-optsubmit\" class=\"optsavebutton\" />"+
+		"<button type=\"button\" id=\"keyaffinity-optreset\" class=\"optsavebutton\">"+ loc_opt_resetDefs +"</button>"+
 	"</div>"+
 
 	"</form>"+
@@ -114,8 +152,8 @@ $(".footer").before("" +
 	"<div class=\"keyaffinity-popfooter\"><strong>More options coming soon!</strong><br />" + popupFooter + "</div>"+
 	
 	"</div>");
-	
-	
+
+//!Options Actions/Form settings
 $("#keyaffinity-optreset").mousedown(function(){
 	resetDefaults();
 })
@@ -169,7 +207,7 @@ $("#optionsform").submit(function(){
 
 });
 
-// Link grabbing
+//!Link grabbing
 var prevLink = $('a.prev').attr("href"); 							// Get link to previous submission
 var nextLink = $('a.next').attr("href"); 							// Get link to next submission
 var faveLink = $('.alt1 a[href*="fav"]').attr("href");				// Get link to fave submission
@@ -179,7 +217,7 @@ var noteLink = $('a[href*="newpm"]').attr("href");					// Get link to note user
 var subUser = $('maintable a[href*="user"]').attr("href");			// Get link to current submission user
 var fullLink;
 
-// Notification variables
+//!Notification variables
 var newNotifs = false;
 var newSubs = false;
 var newTix = false;
@@ -188,7 +226,7 @@ var newNotes = false;
 var titleNotifs = false;
 var pageTitle = document.title;
 
-// Add IDs to elements to simplify jQuery contol
+//!jQuery control simplification
 $('h3 input[name=nuke-watches]').attr("id", "nuke-watches");
 $('input.button.remove-nuke').attr("id", "nuke-subs");
 $('h3 input[name=nuke-shouts]').attr("id", "nuke-shouts");
@@ -199,17 +237,16 @@ $('a[title^="Comments"]').attr("id", "new-comments");
 $('a[title^="Notes"]').attr("id", "new-notes");
 $('a[title^="Trouble"]').attr("id", "new-tickets");
 $('li.noblock:first').attr("id", "notifs"); // Relies on the notifications div being the first noblock li, may want to change
-
 $('li a[href*="Submission-Agreement"]').closest("li").attr("id", "lastsupport");
 
-// Adding tooltip shortcut help
+//!Tooltip shortcut help
 $("#nuke-watches").attr("title", "(Alt-W)");
 $("#nuke-subs").attr("title", "(Alt-S)");
 $("#nuke-shouts").attr("title", "(Alt-H)");
 $("#nuke-comments").attr("title", "(Alt-C)");
 $("#nuke-journals").attr("title", "(Alt-J)");
 
-// Set booleans to enable and disable some functions (possible use for options page)
+//!Option boolean setup
 var control = new Boolean();		// Controls all single-key functions
 var pagination = new Boolean();		// Left/right arrow keys, disabled on non-submission pages
 var mainJump = new Boolean();		// jumping to main section of page, disabled on non-submission pages
@@ -220,10 +257,11 @@ control = true;
 pagination = true;
 comJump = true;
 
-// Other variables
+//!Misc. variables
 var boxFadeSpeed = 300;
+var notifCheckFrequency = 500;
 
-// Options setting
+//!Options setting
 if (optVar_subjump == "true") {
 	mainJump = true;
 }
@@ -245,10 +283,12 @@ else {
 	dlRedirect = false;
 }
 
+//!Grabbing page type and submission number
 var pathArray = window.location.pathname.split( '/' );				// Get current page, place in array
 var pageType = pathArray[1];										// Grab page type (view, journal, full, etc.) from URL
 var subNumber = pathArray[2];										// Grab submission number from URL
 
+// Creating full link
 if (pageType == "view") {
 	fullLink = "http://www.furaffinity.net/full/" + subNumber;
 }
@@ -256,25 +296,28 @@ else if (pageType == "full") {
 	fullLink = "http://www.furaffinity.net/view/" + subNumber;
 }
 
+// Set page type to home if not in a folder
 if (pageType == "") {
 	pageType = "home";
 }
 
+// Disable pagination on pages that aren't paginatable
 if (pageType == "journal" || pageType == "browse" || pageType == "search" || pageType == "home" || pageType == "submit" || pageType == "user") {
 	pagination = false;
 }
 
+// Disable comment and submission jump on pages that aren't submissions or journals
 if (pageType != "view" && pageType != "full" && pageType != "fav"){
 	comJump = false;
 	mainJump = false;
 }
 
-// Redirect to download page if on submission and option is enabled
+//!Download option redirect
 if (dlRedirect && pageType == "view") {
 	window.location = dlLink;
 }
 
-// Debugging stuff
+//!Debug & popup redirect setup
 function getUrlVars() {
 	var vars = [], hash;
 	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -304,61 +347,73 @@ if (showHelp == "true") {
 }
 
 
-// Insert the popup boxes
+//!Alert insertion
 if (nextLink == null && pagination) {
-	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-endreach\" class=\"keyaffinity-popup\">Reached end of gallery</div>");
+	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-endreach\" class=\"keyaffinity-popup\">"+ loc_endGallery  +"</div>");
 }
 
 if (prevLink == null && pagination) {
-	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-beginreach\"  class=\"keyaffinity-popup\">Reached beginning of gallery</div>");
+	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-beginreach\"  class=\"keyaffinity-popup\">"+ loc_beginGallery +"</div>");
 }
 
 if (pagination) {
 	$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-favepop\"  class=\"keyaffinity-popup\">&hearts;</div>");
 }
 
-$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-nomsgs\" class=\"keyaffinity-popup\">No new messages</div>");
+$('.footer').before("<!-- inserted by KeyAffinity --><div id=\"keyaffinity-nomsgs\" class=\"keyaffinity-popup\">"+ loc_noMessages +"</div>");
 
-// Insert Help window divs
+//!Support menu buttons
 $("#lastsupport").after(""+
 	"<li><hr /><li>"+
-	"<a href=\"#\" id=\"keyaffinity-helpshow\">KeyAffinity Help</a>"+
-	"<a href=\"#\" id=\"keyaffinity-optshow\">KeyAffinity Options</a>"+
-	"<a href=\"#\" id=\"keyaffinity-aboutshow\">About KeyAffinity</a>"+
+	"<a href=\"#\" id=\"keyaffinity-helpshow\">"+ loc_help_title +"</a>"+
+	"<a href=\"#\" id=\"keyaffinity-optshow\">"+ loc_opt_title +"</a>"+
+	"<a href=\"#\" id=\"keyaffinity-aboutshow\">"+ loc_about_title +"</a>"+
 "");
 
-
-	
+//!Help popup insert	
 $(".footer").before("" +
 	"<!-- inserted by KeyAffinity -->"+
 	"<div id=\"keyaffinity-help\" class=\"keyaffinity-bigpop\">"+
 	
 	"<div id=\"keyaffinity-helpclose\" class=\"keyaffinity-boxclose\">X</div>"+
 	
-	"<div class=\"keyaffinity-boxtitle\">KeyAffinity Help</div>"+
+	"<div class=\"keyaffinity-boxtitle\">"+ loc_help_title +"</div>"+
 	
 	"<table>"+
 	"<tr>"+
 		"<td>"+
 		
-			"<strong>Anywhere</strong><br />"+
-			"M - Go to new messages page<br />B - Go to browse page<br />S - Go to Search page<br />Alt-? - KA Help (also via Support dropdown)"+
+			"<strong>" + loc_help_anywhere +"</strong><br />"+
+			"M - "+ loc_help_goMsg +"<br />"+
+			"B - "+ loc_help_goBrowse +"<br />"+
+			"S - "+ loc_help_goSearch +"<br />"+
+			"Alt-? - "+ loc_help_helpToggle +"<br />"+
 			"<br />"+
 			
-			"<strong>Submission pages</strong><br />"+
-			"&rarr; - Next Submission<br />&larr; - Previous Submission<br />F - Favorite Submission<br />C - Jump to Comment box<br />&nbsp;&nbsp;&nbsp;(also works on Journals)<br />/ - Change image size<br />D - Download submission<br />"+
+			"<strong>" + loc_help_subPages +"</strong><br />"+
+			"&rarr; - " + loc_help_nextSub +"<br />"+
+			"&larr; - " + loc_help_prevSub +"<br />"+
+			"F - " + loc_help_faveSub +"<br />"+
+			"C - " + loc_help_toComment +"<br />"+
+			"/ - " + loc_help_imageSize +"<br />"+
+			"D - " + loc_help_download +"<br />"+
 			"<br />"+
 			
 		"</td>"+
 		
 		"<td>"+
 		
-			"<strong>Messages pages</strong><br />"+
-			"Alt-S - Nuke Submissions<br />Alt-C - Nuke Submission Comments<br />Alt-W - Nuke Watches<br />Alt-H - Nuke Shouts<br />Alt-J - Nuke Journals<br />"+
+			"<strong>" + loc_help_msgPages +"</strong><br />"+
+			"Alt-S - " + loc_help_nukeSubs +"<br />"+
+			"Alt-C - " + loc_help_nukeSubComs +"<br />"+
+			"Alt-W - " + loc_help_nukeWatches +"<br />"+
+			"Alt-H - " + loc_help_nukeShouts +"<br />A"+
+			"lt-J - " + loc_help_nukeJourns +"<br />"+
 			"<br />"+
 			
-			"<strong>User profiles</strong><br />"+
-			"W - Watch user<br />N - Note user<br />"+
+			"<strong>" + loc_help_userProfs +"</strong><br />"+
+			"W - " + loc_help_watchUser +"<br />"+
+			"N - " + loc_help_noteUser +"<br />"+
 			"<br />"+
 			
 		"</td>"+
@@ -369,7 +424,7 @@ $(".footer").before("" +
 	
 	"</div>");
 
-// About window
+//!About popup insert
 $(".footer").before("" +
 	"<!-- inserted by KeyAffinity -->"+
 	"<div id=\"keyaffinity-about\" class=\"keyaffinity-bigpop\">"+
@@ -409,10 +464,7 @@ if (mainJump) {
 		}, 0);
 }
 
-// Options popup
-
-
-// Notification div watching function
+//!Notification watch (for FA Status compatibility)
 jQuery.fn.contentChange = function(callback){
 var elms = jQuery(this);
 elms.each(
@@ -435,7 +487,7 @@ if(window.watchContentChange){
 		};
 	}
 }
-}, 500);
+}, notifCheckFrequency);
 
 function checkNotifs() {
 	if ($('#new-notes').text() != ""){
@@ -465,7 +517,7 @@ $("#notifs").contentChange(function(){				// When the notifications div changes
 	checkNotifs();									// See what new notications there are
 });													// This is for FA Status compatibility
 
-// Functions for controls
+//!Functions for controls
 function prevSub() {
     if (prevLink != null && pagination) { 							// Make sure that there is an older submission
     	window.location = prevLink; 								// Redirect to it
@@ -541,6 +593,7 @@ function noteUser() {
 	}
 }
 
+//!Functions for toggling popups
 function toggleHelp(fadeSpeed) {
 	if ($("#keyaffinity-help").css("display") == "none") {
 		$("#keyaffinity-help").fadeIn(fadeSpeed);
@@ -587,6 +640,7 @@ function toggleAbout(fadeSpeed) {
 	}
 }
 
+//!Keyboard controls
 $('#JSMessage, .textbox, #message, #keywords').focusin(function() {	// When you enter a textbox
 	control = false;												// disable control
 }).focusout(function() {											// When you leave the textbox
@@ -617,7 +671,8 @@ if (pageType == "msg" && control) {
 	
 }
 
-// Help window toggling
+//!Popup keyboard toggling
+// Help
 $(document).bind('keydown', 'alt+/', function(){
 	toggleHelp(boxFadeSpeed);
 });
@@ -630,7 +685,7 @@ $("#keyaffinity-helpclose").mousedown(function(){
 	toggleHelp(boxFadeSpeed);
 });
 
-// Option window toggling
+// Options
 $("#keyaffinity-optshow").mousedown(function(){
 	toggleOpt(boxFadeSpeed);
 });
@@ -639,7 +694,7 @@ $("#keyaffinity-optclose").mousedown(function(){
 	toggleOpt(boxFadeSpeed);
 });
 
-// About window toggling
+// About
 $("#keyaffinity-aboutshow").mousedown(function(){
 	toggleAbout(boxFadeSpeed);
 });
@@ -648,6 +703,7 @@ $("#keyaffinity-aboutclose").mousedown(function(){
 	toggleAbout(boxFadeSpeed);
 });
 
+//!Keyboard page actions
 $(document.documentElement).keyup(function (event) {				// Detect keyboard usage
     if (event.keyCode == 37 && control && pagination) {				// Watch for left arrow (key 37)
         prevSub();													// Go to previous Submission
@@ -689,8 +745,7 @@ if (pageType == "newpm") {
 	$('input[name*="subject"]').focus();							// Jump to subject box on notes page
 }
 
-// Debug running
-
+//!Debug running
 if (debug) {
 	console.log("\n\n~~ KeyAffinity Debugging ~~");
 	console.log("Previous link: " + prevLink);
