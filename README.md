@@ -64,6 +64,7 @@ On a User's profile:
 * Popup box links unreadable in FA Light theme
 * **Firefox**: End-of-gallery detection not working (found by Mozilla Reviewer)
 * Jumping to submission after clicking on a new comment notification. (workaround: disable submission jump in options)
+* Incompatibility with certain FA Previewer functions
 
 
 ###Special Thanks
