@@ -57,10 +57,16 @@ var loc_about_title		 = 	chrome.i18n.getMessage("about_title");
 var loc_endGallery		 = 	chrome.i18n.getMessage("endGallery");
 var loc_beginGallery	 = 	chrome.i18n.getMessage("beginGallery");
 var loc_noMessages		 = 	chrome.i18n.getMessage("noMessages");
-// END CHROME-SPECIFIC CODE
 
 //!Options loading
 var optVar_loaded = localStorage["opt_loaded"];
+
+//Detecting FA Previewer
+jQuery.fn.exists = function(){return this.length>0;}
+var hasFAPreviewer = false;
+if ($("#fa_popup").exists()) {
+	hasFAPreviewer = true;
+}
 
 function resetDefaults() {
 	localStorage["opt_loaded"] = "true";
@@ -344,6 +350,13 @@ if (showHelp == "true") {
 	toggleHelp(0);
 }
 
+var searchJumpKey;
+if (hasFAPreviewer) {
+	searchJumpKey = "E";
+}
+else {
+	searchJumpKey = "S";
+}
 
 //!Alert insertion
 if (nextLink == null && pagination) {
@@ -384,7 +397,7 @@ $(".footer").before("" +
 			"<strong>" + loc_help_anywhere +"</strong><br />"+
 			"M - "+ loc_help_goMsg +"<br />"+
 			"B - "+ loc_help_goBrowse +"<br />"+
-			"S - "+ loc_help_goSearch +"<br />"+
+			searchJumpKey + " - "+ loc_help_goSearch +"<br />"+
 			"Alt-? - "+ loc_help_helpToggle +"<br />"+
 			"<br />"+
 			
@@ -702,36 +715,52 @@ $("#keyaffinity-aboutclose").mousedown(function(){
 });
 
 //!Keyboard page actions
-$(document.documentElement).keyup(function (event) {				// Detect keyboard usage
-    if (event.keyCode == 37 && control && pagination) {				// Watch for left arrow (key 37)
-        prevSub();													// Go to previous Submission
+
+var keyCode_prevSub 	= 37;			//Left arrow
+var keyCode_nextSub 	= 39;			//Right arrow
+var keyCode_faveSub 	= 70;			//F
+var keyCode_comJump 	= 67;			//C
+var keyCode_download 	= 68;			//D
+var keyCode_msgJump 	= 77;			//M
+var keyCode_browse 		= 66;			//B
+var keyCode_search 		= 83;			//S (changes if user has FA Previewer)
+var keyCode_watch 		= 87;			//W
+var keyCode_note 		= 78;			//N
+
+if (hasFAPreviewer) {
+	keyCode_search = 69;				//Change to E if user has FA Previewer
+}
+
+$(document.documentElement).keyup(function (event) {			
+    if (event.keyCode == keyCode_prevSub && control && pagination) {
+        prevSub();
     }
-    else if (event.keyCode == 39 && control && pagination) {		// Watch for right arrow (key 39)
-        nextSub(); 													// Go to next Submission
+    else if (event.keyCode == keyCode_nextSub && control && pagination) {
+        nextSub();
     }
-    else if (event.keyCode == 70 && control && pagination) {		// Watch for F key (key 70)
-    	faveSub();													// Favorite Submission
+    else if (event.keyCode == keyCode_faveSub && control && pagination) {
+    	faveSub();
     }
-    else if (event.keyCode == 67 && control && comJump) {			// Watch for C key (key 67)
-    	comment();													// Jump to comment box
+    else if (event.keyCode == keyCode_comJump && control && comJump) {
+    	comment();
     }
-    else if (event.keyCode == 68 && control && pagination) {		// Watch for D key (key 68)
-    	download();													// Shrink/enlarge image
+    else if (event.keyCode == keyCode_download && control && pagination) {
+    	download();
     }
-    else if (event.keyCode == 77 && control) {						// Watch for M key (key 77)
-    	goToMsgs();													// Go to new messages
+    else if (event.keyCode == keyCode_msgJump && control) {
+    	goToMsgs();
     }
-    else if (event.keyCode == 66 && control) {						// Watch for B key (key 66)
-    	goToPage("browse");											// Go to browse page
+    else if (event.keyCode == keyCode_browse && control) {					
+    	goToPage("browse");
     }
-    else if (event.keyCode == 83 && control) {						// Watch for S key (key 83)
-    	goToPage("search");											// Go to search page
+    else if (event.keyCode == keyCode_search && control) {					
+    	goToPage("search");
     }
-    else if (event.keyCode == 87 && control) {						// Watch for W key (key 87)
-    	watchUser();												// Go to watch url if on user page
+    else if (event.keyCode == keyCode_watch && control) {					
+    	watchUser();
     }
-    else if (event.keyCode == 78 && control) {						// Watch for N key (key 78)
-    	noteUser();													// Go to note url if on user page
+    else if (event.keyCode == keyCode_note && control) {					
+    	noteUser();
     }
 });
 
@@ -763,6 +792,7 @@ if (debug) {
 	console.log("New support tickets: " + newTix);
 	console.log("New comments: " + newComms);
 	console.log("New notes: " + newNotes);
+	console.log("Has FA Previewer: " + hasFAPreviewer);
 	console.log("Options:");
 	console.log("\tSubmission auto-scroll: " + optVar_subjump);
 	console.log("\tDebug Mode: " + optVar_debug);
