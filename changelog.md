@@ -1,5 +1,8 @@
 #KeyAffinity Changelog
 ---
+####1.4
+ * Added a temporary fix for FA Previewer incompatibility
+
 ####1.1.3
  * Added about page
 
